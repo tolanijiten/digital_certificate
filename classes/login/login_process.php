@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
         if($role==0)
         {
             echo "here";
-            $_SESSION['organization_id']=$organization_id;
+            $_SESSION['organization_id']=1;
             header("Location: ../issuer/template.php");
             
         }

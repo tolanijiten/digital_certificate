@@ -1,8 +1,8 @@
 <?php
 include_once("../../functions/db.php");
 session_start();
-$organization_id = $_SESSION["organization_id"]; //to be uncommented
-//$organization_id = 13; //to be commented afterwards when involving sessions
+//$organization_id = $_SESSION["organization_id"]; //to be uncommented
+$organization_id = 13; //to be commented afterwards when involving sessions
 //if(isset($_GET['template_id'])){
 //    echo "here";
 //    $template_id=$_GET['template_id'];
@@ -176,7 +176,7 @@ $extension = strtolower(array_pop($value));
 //  $output = '<label class="text-danger">Invalid File</label>'; //if non excel file then
  }
     
-header("Location: template.php");
+header("Location: records.php?generation_id=$recent_id");
     
     
 }

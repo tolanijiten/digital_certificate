@@ -39,7 +39,7 @@ try {
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Congratulations you have been logged in ';
-    $mail->Body    = 'Hello you have been logged in to vesit question paper your password is <b>'.$link."&student_id=".$s.'</b> .Kindly change your password ';
+    $mail->Body    = 'Hello you have been logged in to vesit question paper your password is <b>'.$link."&student_id=".$s.'</b>   .    Kindly change your password ';
     $mail->AltBody = 'your password is <b>'.$link.'</b> Kindly change your password before using it';
 
     $mail->send();

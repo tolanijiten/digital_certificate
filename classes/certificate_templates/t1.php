@@ -73,7 +73,7 @@ $committee_name = "CSI";
            <div class="certificate-body">
              <div class="certi-qr-code">
                  <div class="qr-code">
-                   <img src="../higher_authority/images/<?php echo $qr_code; ?>" alt="">
+                   <img src="../issuer/images/<?php echo $qr_code; ?>" alt="">
                </div>
             </div>
  
@@ -106,7 +106,7 @@ $committee_name = "CSI";
                </div>
                <div class="col-md-4 col-sm-4 col-xs-4">
                <div class="sign1">
-                   <p><image class="sign" src="../higher_authority/images/higher_authority_signature/<?php echo $higher_authority_signature ?>"></image></p><p><?php echo $signature_2; ?></p>
+                   <p><image class="sign" src="../issuer/images/higher_authority_signature/<?php echo $higher_authority_signature ?>"></image></p><p><?php echo $signature_2; ?></p>
                </div>
                </div>
                 </div><!--row-->

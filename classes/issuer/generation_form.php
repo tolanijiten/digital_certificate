@@ -46,12 +46,12 @@ $template_id=$_GET['template_id'];
                                 <label for="">Organisation Name</label>
                                 <div style="width: 50px; height: 3px; background:#b0413e; margin-bottom: 15px;"></div>
                                 <?php
-                               $query = "SELECT * FROM organization WHERE organization_id = $organization_id";
-                               $result = mysqli_query($connection, $query);
-                               $row = mysqli_fetch_assoc($result);
+//                               $query = "SELECT * FROM organization WHERE organization_id = $organization_id";
+//                               $result = mysqli_query($connection, $query);
+//                               $row = mysqli_fetch_assoc($result);
                                
                                ?>
-                                <input type="text" class="form-control" id="" placeholder="Organisation Name" name="name" value="<?php echo $row["name"] ?>" readonly>
+                                <input type="text" class="form-control" id="" placeholder="Organisation Name" name="name" value="VESIT" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="">Logo <span style="color: red;">Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a></span></label>
