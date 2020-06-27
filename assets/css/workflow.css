@@ -28,7 +28,7 @@ h6 {
 	
 
     font-weight: 700;
-    color: #b0413e;
+    color: #204a84;
     line-height: 1.2;
 }
 
@@ -276,7 +276,7 @@ img {
 }
 
 .single-workflow-area:hover h2 {
-    background-color:#B0413E;
+    background-color:#204a84;
     color: #fff;
 }
 
@@ -301,7 +301,7 @@ img {
 }
 
 .mosh-workflow-slides .owl-dot.active {
-    background-color: #b0413e;
+    background-color: #204a84;
 }
 /* -------------------------
 :: 6.0 Features Area

@@ -20,10 +20,10 @@
 	<link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
 
 </head>
-<body style="background-color:#B0413E">
+<body style="background-color:#204A84">
 	
 	<div class="limiter">
-		<div class="container" style="margin-top:60px;margin-right:30px;">
+		<div class="container" style="margin-top:100px;margin-right:100px;">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="../../assets/images/img-01.png" alt="IMG">

@@ -100,37 +100,75 @@
 <body style="background-color:#f9f9f9">
 	<!--Navbar-->
 	<h1 class="typing"></h1>
-	<nav class="navbar-light bg-light" style="margin-top:20px;font-size:16px;">
+<!--
+	<nav class="navbar fixed-top navbar-light bg-light" style="font-size:16px;">
 		<ul class="nav justify-content-left">
 			<li class="nav-item">
-				<a class="nav-link active bit_nav bit_nav1" href="#" style="color:#B0413E ">Home</a>
+				<a class="nav-link active bit_nav bit_nav1" href="#" style="color:#204a84 ">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#workflow" style="color:#B0413E ">How it Works</a>
+				<a class="nav-link active bit_nav" href="#workflow" style="color:#204a84 ">How it Works</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#features" style="color:#B0413E ">Features</a>
+				<a class="nav-link active bit_nav" href="#features" style="color:#204a84 ">Features</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#clients" style="color:#B0413E ">Organizations</a>
+				<a class="nav-link active bit_nav" href="#clients" style="color:#204a84 ">Organizations</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#contact" style="color:#B0413E ">Contact</a>
+				<a class="nav-link active bit_nav" href="#contact" style="color:#204a84 ">Contact</a>
 			</li>
 			<li class="nav-item ">
-				<a class="logout btn bit_button" href="../classes/login/login.php" style="color:#fff;background-color:#b0413e; margin-top:5px;">Login</a>
+				<a class="logout btn bit_button" href="../classes/login/login.php" style="color:#fff;background-color:#204a84; margin-top:5px;">Login</a>
 			</li>
 
 
 		</ul>
 	</nav>
+-->
+	<nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Vivekanad Education Society Institute of Technology</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">How it works</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="logout btn bit_button" href="../classes/login/login.php" >Login</a>
+      </li>
+<!--
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+-->
+    </ul>
+<!--
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+-->
+  </div>
+</nav>
 
 	<!--Section 1 -->
 
 
 
-	<div class="container-fluid" style="margin-top:60px;background-color:#bd4642;">
+	<div class="container-fluid" style="margin-top:60px;background-color:#204a84;">
 		<div class="row">
 			<div class="col-md-6 " data-tilt>
 				<img src="../assets/images/2.png" alt="">
@@ -138,7 +176,7 @@
 			<div class="col-md-5 type">
 				<h2 style="color:#fff;padding-bottom:10px;letter-spacing:3px;"><i>Digital Certificate Generation!</i></h2>
 				<p style="text-align:justify;color:#fff;font-size:18px;">As it has been observed that the forgery of the the certificates has been increasing gradually.Also, a lot of paper is been wasted for generating hard copies of certificates. This issue can be solved by creating digital certificates i.e. e-certificates. The digital certificates can be generated with a QR-code on certificate using the blockchain technology. Currently, there are multiple numbers of ways through which one can verify the existence of a certificates an individual has on theblockchain. The easiest of them isto upload/scan the certificates to verify its existence. Upon uploading of the certificates,the proof of its existence gets verified, as the cryptographic digest and the marker for the transaction are also verified.</p>
-				<a href="login/login.php"><button class="btn generate" style="width:180px;height:60px;border:2px solid #fff;color:#fff;background-color:#b0413e;margin-left:200px;margin-top:30px;padding:15px;font-size:20px">Generate Now -></button></a>
+				<a href="login/login.php"><button class="btn generate" style="width:180px;height:60px;border:2px solid #fff;color:#fff;background-color:#204a84;margin-left:200px;margin-top:30px;padding:15px;font-size:20px">Generate Now !</button></a>
 
 			</div>
 
@@ -155,8 +193,8 @@
 
 		<div class="wow animated fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
 
-			<h2 style="color:#b0413e;letter-spacing:3px;text-align:center;"> How Does It Work</h2>
-			<div style="width: 50px; height: 3px; background:#b0413e; margin: 0 auto 30px;"></div>
+			<h2 style="color:#204a84;letter-spacing:3px;text-align:center;"> How Does It Work</h2>
+			<div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
 		</div>
 		<div class="workflow-img">
 			<img src="../assets/images/work-progress.png" alt="">
@@ -234,8 +272,8 @@
 	
 	<!-- ***** Services Area Start ***** -->
 	<div class="wow animated fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" id="features">
-		<h2 style="color:#b0413e;letter-spacing:3px;text-align:center;">Features</h2>
-		<div style="width: 50px; height: 3px; background:#b0413e; margin: 0 auto 30px;"></div>
+		<h2 style="color:#204a84;letter-spacing:3px;text-align:center;">Features</h2>
+		<div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
 	</div>
 
 	<section class="mosh--services-area section_padding_100">
@@ -324,13 +362,14 @@
 		</div>
 	</section>
 	<!-- ***** Clients Area Start ***** -->
+<!--
 	<section class="mosh-clients-area section_padding_100 clearfix" style="background:#fff" id="clients">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 wow animated fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
 
-					<h2 style="color:#b0413e;letter-spacing:3px;text-align:center;">Organizations</h2>
-					<div style="width: 50px; height: 3px; background:#b0413e; margin: 0 auto 30px;"></div>
+					<h2 style="color:#204a84;letter-spacing:3px;text-align:center;">Organizations</h2>
+					<div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
 
 				</div>
 				<div class="col-12">
@@ -345,6 +384,7 @@
 			</div>
 		</div>
 	</section>
+-->
 	<!-- ***** Clients Area End ***** -->
 
 	<!--Footer-->
