@@ -149,6 +149,18 @@ $template_id=$_GET['template_id'];
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="text" class="form-control" id="" placeholder="Higher Authority Name" name="signature_2_name">
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="">Second Authority Signature </label>
+                                <span style="color: red;">Upload a Transperent png photo
+<!--                                . Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a>-->
+                                
+                                </span>
+                                <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
+                                <input type="file" id="" name="higher_authority_signature" class="">
+                                   
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="">Upload Excel Sheet</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
