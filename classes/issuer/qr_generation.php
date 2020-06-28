@@ -11,6 +11,18 @@ if(isset($_POST['verify']))
 {
 //    echo "here";
     $generation_id=$_POST['generation_id'];
+    $ciphering = "BF-CBC"; 
+  
+    $iv_length = openssl_cipher_iv_length($ciphering); 
+    $options = 0; 
+  
+    $encryption_iv = '12345678'; 
+  
+    $encryption_key = "DigiCertificate"; 
+  
+    $committee_id_hash= openssl_encrypt($generation_id, $ciphering, $encryption_key, $options, $encryption_iv);
+    echo $committee_id_hash;
+    
 //$generation_id=1;
     echo "<br>".$generation_id;
     if(isset($_FILES['higher_authority_signature'])){
@@ -39,44 +51,71 @@ if(isset($_POST['verify']))
 //    echo $recent_id;    
     $result = mysqli_query($connection, $query);
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 $query="Select * from generation where generation_id=$generation_id";
-//echo $query;
 $result_set=mysqli_query($connection,$query);
 $row=mysqli_fetch_assoc($result_set);
 $table_name=$row['commitee_name'];
 $template_id=$row['template_id'];
-
-//echo $table_name;
-
 $query="Select * from $table_name";
-$result_set=mysqli_query($connection,$query);
-    
+$result_set=mysqli_query($connection,$query);    
 $num=mysqli_num_rows($result_set);
 $count=0;
     
 while($count!=$num)
 {   
-//    echo "<br>";
     $row=mysqli_fetch_assoc($result_set);
     $student_id=$row['student_id'];
     $name=$row['student_name'];
-//    echo $student_id;
     $count=$count+1;
     $folder="images/";
     
     
+    
+    
 //    $qr_name=explode(".",$generation_id,$student_id);
     $file_name=".png";
-    $qr_name=$generation_id.$student_id.$file_name;
+    $qr_name=$table_name."_".$student_id.$file_name;
     $text=$name;
     
-//    echo $qr_name;
+    echo $qr_name;
     $file=$folder.$qr_name;
     
-    $link="generation_id=".$generation_id."&"."student_id=".$student_id;
+    
+    $com_hash="";
+
+    $simple_string = $student_id; 
+    echo "<br>";
+  
+    $ciphering = "BF-CBC"; 
+  
+    $iv_length = openssl_cipher_iv_length($ciphering); 
+    $options = 0; 
+  
+    $encryption_iv = '12345678'; 
+  
+    $encryption_key = "DigiCertificate"; 
+  
+    $student_id_hash = openssl_encrypt($simple_string, $ciphering, $encryption_key, $options, $encryption_iv); 
+    
+    
+    
+    
+    
+    $link="committe_id=".$committee_id_hash."&"."student_id=".$student_id_hash;
 //    echo "<br><br>";
     echo $link;
+//    exit;
     $links='localhost/bitcampdigi/classes/certificate_templates/'.$template_id.".php?".$link;
 //    echo $links;
 //    echo $qr_name;
