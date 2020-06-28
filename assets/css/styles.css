@@ -1,0 +1,43 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+.main{
+    
+    margin: 180px;
+    margin-top: 20px;
+/*    margin-left: px;*/
+    margin-bottom: 0;
+    padding: 50px;
+    padding-left: 80px;
+    background: url(../../assets/images/certificate_inside_images/border1.png) center no-repeat;
+    background-size: 104% 100%;
+}
+.own{
+    margin-top:25px;
+    font-family:"Merriweather";
+    font-size:25px;
+    color:#002060;
+    text-align: center; 
+}
+.content{
+    margin-bottom: 6px;
+}
+.content3{
+    font-family: "roboto";
+    font-size:16px;
+    color:black;
+   
+  
+}
+.content4{
+    font-family: "roboto";
+    font-size:16px;
+    color:black;
+   
+  
+}
+.font-specifications{
+   font-family:"roboto";
+   font-size:20px;
+}
