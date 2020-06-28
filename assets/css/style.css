@@ -16,8 +16,22 @@ letter-spacing: 1px;
 font-family: 'Nunito Sans', sans-serif;
 font-size: 20px;
 }
-.bit_nav:hover{
+.navbar .navbar-nav .bit_nav:after{
 color:#204A84; 
+background: none repeat scroll 0 0 transparent;
+bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #204a84;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.navbar .navbar-nav .bit_nav:hover:after{
+    
 }
 
 .navbar .navbar-brand{
@@ -25,6 +39,7 @@ color:#204A84;
 }
 .navbar .navbar-brand:hover{
     color: #204a84;
+    
 }
 
 .bit_button{
@@ -32,12 +47,13 @@ color:#204A84;
 	color: #F8F9FA;
     width:90px;
 /*	margin-left:25px;*/
-    margin-top: 5px;
+/*    margin-top: px;*/
 	background-color:#204A84;
 	font-size: 16px;
 	font-family: 'Nunito Sans', sans-serif;
 	box-shadow: 1px 1px 5px #CEE5F2;
 	border: none;
+    border: 1px solid #204A84;
 }
 .bit_button:hover{
 	color: #204A84;

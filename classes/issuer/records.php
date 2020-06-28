@@ -50,69 +50,107 @@ function display_students(){
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         body{
 	font-family: "Nunito Sans", sans-serif;
 	
 /*	background:#f8f8f8;*/
 }
-	.nav-item .logout:hover{
-		background: #fff;
-		border: 1px solid #b0413e;
-		color: #b0413e;
-	}
-
+        td{
+            color: rgb(33,37,41);
+        }
+/*        .table-responsive {height:640px;}*/
+        .generate{
+            border:solid 1px #204a84; 
+            background:#F8F9FA; 
+            color: #204a84; 
+            font-size: 20px;  
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            width: 75%; 
+            margin:0; 
+            position: absolute;
+            left: 25%;
+        }
+        .generate:hover{
+            background: #204a84;
+            color: #f8f9fa;
+        }
 </style>
 </head>
 
 <body>
+    <nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Vivekanad Education Society Institute of Technology</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <nav class="navbar-light bg-light" style="padding:20px;font-size:16px;">
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" href="requests.php" style="color:#B0413E ">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="logout btn" href="#" style="color:#fff;background-color:#b0413e; ">Logout</a>
-            </li>
-
-
-        </ul>
-    </nav>
-    <div class="container-fluid">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">Home</a>
+      </li>
+<!--
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">How it works</a>
+      </li>
+-->
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bit_nav" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="logout btn bit_button" href="../classes/login/login.php" >Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container-fluid" style="margin-top:59px;">
         <div class="row">
             <?php
             
             ?>
             
-            <div class="col-md-5" style="overflow: scroll; height:89%;">
-                <table class="table table-striped table-hover">
-                    <thead style="color:#b0413e;">
+            <div class="col-md-5">
+               <div class="container">
+                   <div class="row">
+                    <div class="table-responsive text-nowrap">
+                     <table class="table table-striped table-hover">
+                    <thead style="color:#204a84;">
                         <tr>
                             <th>Student Name</th>
                             <th>Class</th>
                             <th>Rank</th>
                             <th>Field</th>
                         </tr>
+                        
                     </thead>
-                    <tbody>
+                    <tbody id="myTable">
                         <?php
         display_students();
         ?>
+                   
                     </tbody>
                 </table>
-
+                  </div>  
+                   <div class="col-md-12">
+                      <ul class="pagination justify-content-end" id="myPager"></ul>
+                    </div>
+                   </div><!--Table row-->
+                   
+            </div><!--tablecontainer--> 
             </div>
             <!--col-md-5-->
-            <div class="col-md-7" style="background-color: #b0413e; padding: 20px;">
+            <div class="col-md-7" style="background-color: #204a84; padding: 20px; position:fixed; top:60; right:0; height:100%">
                 <div>
-                    <img src="../../assets/images/t2.png" alt="" style="height: 500px; width: 650px; padding: 30px; margin: 30px; margin-left: 100px;">
+                    <img  class="img-fluid"src="../../assets/images/t2.png" alt="" style="height: 500px; width: 650px; padding: 30px; margin: 30px; margin-left: 100px;">
                 </div>
                 <div class="row">
-                    <div class="col-md-5">
-                    </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-default" style="width: 100px; background-color: white; color: #b0413e; font-size: 20px;  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" data-toggle='modal' data-target='#verifyModal'> Generate <i class="fa fa-check"></i></button>
+                        <div class="col-md-4 offset-md-4">
+                        <button type="button" class="btn btn-default generate"data-toggle='modal' data-target='#verifyModal'> Generate <i class="fa fa-check"></i></button>
                     </div>
                 </div>
             </div>
@@ -149,7 +187,7 @@ function display_students(){
                                 </div>
                                 
                                 <div class="modal-footer">
-                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #b0413e; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
+                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #204a84; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
                                 </div>
 
                             </div>
@@ -169,6 +207,114 @@ function display_students(){
     <script src="../../assets/js/jquery.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/vendor/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+    <script>
+    $.fn.pageMe = function(opts){
+    var $this = this,
+        defaults = {
+            perPage: 7,
+            showPrevNext: false,
+            hidePageNumbers: false
+        },
+        settings = $.extend(defaults, opts);
+    
+    var listElement = $this;
+    var perPage = settings.perPage; 
+    var children = listElement.children();
+    var pager = $('.pager');
+    
+    if (typeof settings.childSelector!="undefined") {
+        children = listElement.find(settings.childSelector);
+    }
+    
+    if (typeof settings.pagerSelector!="undefined") {
+        pager = $(settings.pagerSelector);
+    }
+    
+    var numItems = children.length;
+    var numPages = Math.ceil(numItems/perPage);
+
+    pager.data("curr",0);
+    
+    if (settings.showPrevNext){
+        $('<li class ="page-item"><a href="#" class="prev_link page-link">«</a></li>').appendTo(pager);
+    }
+    
+    var curr = 0;
+    while(numPages > curr && (settings.hidePageNumbers==false)){
+        $('<li class ="page-item"><a href="#" class="page_link page-link">'+(curr+1)+'</a></li>').appendTo(pager);
+        curr++;
+    }
+    
+    if (settings.showPrevNext){
+        $('<li class ="page-item"><a href="#" class="next_link page-link">»</a></li>').appendTo(pager);
+    }
+    
+    pager.find('.page_link:first').addClass('active');
+    pager.find('.prev_link').hide();
+    if (numPages<=1) {
+        pager.find('.next_link').hide();
+    }
+      pager.children().eq(1).addClass("active");
+    
+    children.hide();
+    children.slice(0, perPage).show();
+    
+    pager.find('li .page_link').click(function(){
+        var clickedPage = $(this).html().valueOf()-1;
+        goTo(clickedPage,perPage);
+        return false;
+    });
+    pager.find('li .prev_link').click(function(){
+        previous();
+        return false;
+    });
+    pager.find('li .next_link').click(function(){
+        next();
+        return false;
+    });
+    
+    function previous(){
+        var goToPage = parseInt(pager.data("curr")) - 1;
+        goTo(goToPage);
+    }
+     
+    function next(){
+        goToPage = parseInt(pager.data("curr")) + 1;
+        goTo(goToPage);
+    }
+    
+    function goTo(page){
+        var startAt = page * perPage,
+            endOn = startAt + perPage;
+        
+        children.css('display','none').slice(startAt, endOn).show();
+        
+        if (page>=1) {
+            pager.find('.prev_link').show();
+        }
+        else {
+            pager.find('.prev_link').hide();
+        }
+        
+        if (page<(numPages-1)) {
+            pager.find('.next_link').show();
+        }
+        else {
+            pager.find('.next_link').hide();
+        }
+        
+        pager.data("curr",page);
+      	pager.children().removeClass("active");
+        pager.children().eq(page+1).addClass("active");
+    
+    }
+};
+
+$(document).ready(function(){
+    
+  $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:12});
+    
+});</script>
 </body>
 
 </html>
