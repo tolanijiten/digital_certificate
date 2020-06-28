@@ -116,7 +116,7 @@ while($count!=$num)
 //    echo "<br><br>";
     echo $link;
 //    exit;
-    $links='localhost/bitcampdigi/classes/certificate_templates/'.$template_id.".php?".$link;
+    $links='localhost/ecertificate/classes/certificate_templates/'.$template_id.".php?".$link;
 //    echo $links;
 //    echo $qr_name;
     QRcode::png($links,$file);
