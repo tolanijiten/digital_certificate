@@ -511,6 +511,8 @@
     <script src="../../assets/js/jquery.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/vendor/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+    
+    
     <script>
     $.fn.pageMe = function(opts){
     var $this = this,
