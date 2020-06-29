@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
-	<meta charset="UTF-8">
+   <title>Ves Certificate Login</title>
+   <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap/bootstrap.min.css">
@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
 
 </head>
-<body style="background-color:#204A84">
+<body style="background-color:#337ab7">
 	
 	<div class="limiter">
 		<div class="container" style="margin-top:100px;margin-right:100px;">

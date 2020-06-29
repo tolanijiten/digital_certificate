@@ -11,18 +11,10 @@ function display_students(){
      $row = mysqli_fetch_array($result);
      $commitee_name = $row['commitee_name'];
      $template_id=$row['template_id'];
-//     $organisation_id = $row['organisation_id'];
-    // $query1="Select * from organisation where organisation_id = $organisation_id";
-    // $result1 = mysqli_query($connection, $query1);
-    // $row1 =mysqli_fetch_array($result1);
-    // $organisation_name = $row1['organisation_name'];
-    // $organisation_name = strtolower($organisation_name);
-//    $commitee_name = 'csi';
-//    $organisation_name = 'rait';
+     echo $template_id;
      $query2 = "select * from $commitee_name";
-    //echo $query2
-    $result2 = mysqli_query($connection , $query2);
-    while($row2 = mysqli_fetch_assoc($result2)){
+     $result2 = mysqli_query($connection , $query2);
+     while($row2 = mysqli_fetch_assoc($result2)){
         $student_name = $row2['student_name'];
         $class = $row2['class'];
         $rank = $row2['rank'];
@@ -36,6 +28,13 @@ function display_students(){
         echo"</tr>";
     }
 }
+ global $connection;
+     $generation_id = $_GET['generation_id'];
+     $query="Select * from generation where generation_id = $generation_id";
+     $result = mysqli_query($connection , $query);
+     $row = mysqli_fetch_array($result);
+     $commitee_name = $row['commitee_name'];
+     $template_id=$row['template_id'];
 
  
 ?>
@@ -47,6 +46,9 @@ function display_students(){
 <html>
 
 <head>
+   
+   <title>Ves Certificate Generate</title>
+   <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">	<meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
@@ -62,9 +64,9 @@ function display_students(){
         }
 /*        .table-responsive {height:640px;}*/
         .generate{
-            border:solid 1px #204a84; 
+            border:solid 1px #50a1ed; 
             background:#F8F9FA; 
-            color: #204a84; 
+            color: #50a1ed; 
             font-size: 20px;  
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
             width: 75%; 
@@ -73,7 +75,7 @@ function display_students(){
             left: 25%;
         }
         .generate:hover{
-            background: #204a84;
+            background: #337ab7;
             color: #f8f9fa;
         }
 </style>
@@ -94,7 +96,7 @@ function display_students(){
                    <div class="row">
                     <div class="table-responsive text-nowrap">
                      <table class="table table-striped table-hover">
-                    <thead style="color:#204a84;">
+                    <thead style="color:#337ab7;">
                         <tr>
                             <th>Student Name</th>
                             <th>Class</th>
@@ -119,9 +121,9 @@ function display_students(){
             </div><!--tablecontainer--> 
             </div>
             <!--col-md-5-->
-            <div class="col-md-7" style="background-color: #204a84; padding: 20px; position:fixed; top:60; right:0; height:100%">
+            <div class="col-md-7" style="background-color: #337ab7; padding: 20px; position:fixed; top:60; right:0; height:100%">
                 <div>
-                    <img  class="img-fluid"src="../../assets/images/t2.png" alt="" style="height: 500px; width: 650px; padding: 30px; margin: 30px; margin-left: 100px;">
+                    <img  class="img-fluid"src="../../assets/images/<?php echo $template_id; ?>.png" alt="" style="height: 500px; width: 650px; padding: 30px; margin: 30px; margin-left: 100px;">
                 </div>
                 <div class="row">
                         <div class="col-md-4 offset-md-4">
@@ -150,10 +152,12 @@ function display_students(){
                             <div class="form-body">
                                 <div class="form-group clearfix">
 
+<!--
                                     <div class="col-md-9">
                                        <label for="">Upload your Signature <span style="color: red;">Please Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtool</a></span></label>
                                         <input type="file" id="edit_category_id" name="higher_authority_signature"> 
                                     </div>
+-->
                                     
                                     <div class="col-md-9">
                                         <input type="hidden" id="edit_category_id" name="generation_id" value="<?php echo $generation_id; ?>" > 
@@ -162,7 +166,7 @@ function display_students(){
                                 </div>
                                 
                                 <div class="modal-footer">
-                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #204a84; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
+                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #337ab7; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
                                 </div>
 
                             </div>

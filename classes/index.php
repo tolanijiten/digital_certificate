@@ -174,7 +174,7 @@
 
 
 
-	<div class="container-fluid" style="margin-top:60px;background-color:#204a84;">
+	<div class="container-fluid" style="margin-top:60px;background-color:#337ab7;">
 		<div class="row">
 			<div class="col-md-6 " data-tilt>
 				<img src="../assets/images/2.png" alt="">

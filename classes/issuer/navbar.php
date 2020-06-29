@@ -1,4 +1,5 @@
-<nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+ <img src="../../assets/images/ves_logo.png" height="40px;" style="margin-right:20px;">
   <a class="navbar-brand" href="#">Vivekanad Education Society Institute of Technology</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
