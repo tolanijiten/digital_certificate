@@ -1,3 +1,15 @@
+<?php
+require_once('../../functions/db.php');
+session_start();
+$user_id=$_SESSION['user_id'];
+$query="select * from users where user_id=$user_id";
+$result=mysqli_query($connection,$query);
+$result_set=mysqli_fetch_assoc($result);
+$logged_in=$result_set['logged_in'];
+//echo $logged_in;
+//exit;
+if($logged_in==0){
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,13 +82,25 @@
                         </div><!--End of category-heading-->
                     </div><!-- End of Form Title-->
                     <div class="form-content">
-                        <form action="change_password_process.php" method="POST">
+                       
+                        <form action="change_password_process.php" method="POST" onsubmit="return velidate()">
+                            <div class="row">
+                            <div class="col-md-5 ">
+<!--                            <span style="color: red;">Invalid</span>-->
+                                </div>
+                                <div class="col-md-6 ">
+                            <span style="color: red; display:none" id="incomplete">Form Incomplete!!</span>
+                            <span style="color: red; display:none" id="pswrd">Confirm Password doesnot match!!</span>
+
+                                </div>
+                            </div>
                         <div class="row">
+                           
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
                                 <label for="">Previous Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="text" class="form-control" id="" placeholder="Enter Passowrd recived form Admin" name="issuer_name">
+                                <input type="text" class="form-control" id="previous_password" placeholder="Enter Passowrd recived form Admin" name="previous_password">
                             </div> 
                             </div>
                         </div>
@@ -85,7 +109,7 @@
                                <div class="form-group">
                                 <label for="">New Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="password" class="form-control" id="" placeholder="New Password" name="issuer_email">
+                                <input type="password" class="form-control" id="new_password" placeholder="New Password" name="new_password">
                             </div> 
                             </div>
                         </div>
@@ -94,7 +118,7 @@
                                <div class="form-group">
                                 <label for="">Confirm Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="password" class="form-control" id="" placeholder="Confirm Password" name="issuer_password">
+                                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password">
                             </div>
                             </div>
                         </div>
@@ -105,6 +129,8 @@
                                 </div>
                             </div>
                         </form>
+                        
+                        
                     </div><!-- End of Form Content-->
            </div><!--End of inner container-->
        </div><!-- End of Container-->
@@ -120,6 +146,37 @@
 </footer>
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
- <script src="../../assets/js/bootstrap.min.js"></script>    
+ <script src="../../assets/js/bootstrap.min.js"></script>   
+ 
+  <script>
+    function velidate(){
+        
+        var prev_pass=document.getElementById("previous_password").value;
+        var new_pass=document.getElementById("new_password").value;
+        var cnf_pass=document.getElementById("confirm_password").value;
+        
+        if(prev_pass == "" || new_pass=="" || cnf_pass=="" ){
+        var x = document.getElementById("incomplete");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            return false;
+        }else if(new_pass != cnf_pass){
+//            window.alert("cnf");
+            var y = document.getElementById("pswrd");
+            if (y.style.display === "none") {
+                y.style.display = "block";
+                return false;
+            }
+        }
+//        window.alert(prev_pass);
+
+    }
+    </script> 
 </body>
 </html>
+<?php 
+    }else{
+        header("Location: ../issuer/select_template.php");
+} 
+?>

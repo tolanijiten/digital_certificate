@@ -11,13 +11,13 @@ if(isset($_POST['submit_generation'])){
 
     
     $query = "INSERT INTO users(user_id,email_id,password,role,logged_in,user_name,deleted) VALUES('','$issuer_email','$hashed_password',1,0,'$issuer_name',0)";
-//    echo $query;
     $result = mysqli_query($connection,$query);
     if(!$result)
     {
         die("Query Failed : ". mysqli_error($connection));
+        echo $query;
     }
-    header("Location: http://localhost/ecertificate/classes/admin/add_issuer.php");
+    header("Location: http://localhost/ecertificate/classes/admin/view_issuer.php");
         
 }
 ?>

@@ -16,7 +16,7 @@
         <a class="nav-link bit_nav" href="#">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="logout btn bit_button" href="../classes/login/login.php" >Login</a>
+        <a class="logout btn bit_button" href="../login/logout.php" >Logout</a>
       </li>
     </ul>
   </div>
