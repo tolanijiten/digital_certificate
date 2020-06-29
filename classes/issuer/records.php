@@ -11,7 +11,6 @@ function display_students(){
      $row = mysqli_fetch_array($result);
      $commitee_name = $row['commitee_name'];
      $template_id=$row['template_id'];
-     echo $template_id;
      $query2 = "select * from $commitee_name";
      $result2 = mysqli_query($connection , $query2);
      while($row2 = mysqli_fetch_assoc($result2)){
@@ -152,12 +151,14 @@ function display_students(){
                             <div class="form-body">
                                 <div class="form-group clearfix">
 
-<!--
                                     <div class="col-md-9">
-                                       <label for="">Upload your Signature <span style="color: red;">Please Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtool</a></span></label>
+                                       <p >Are you Sure??  </p>
+<!--
+                                       <span style="color: red;">
+                                       Please Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtool</a></span></label>
                                         <input type="file" id="edit_category_id" name="higher_authority_signature"> 
-                                    </div>
 -->
+                                    </div>
                                     
                                     <div class="col-md-9">
                                         <input type="hidden" id="edit_category_id" name="generation_id" value="<?php echo $generation_id; ?>" > 

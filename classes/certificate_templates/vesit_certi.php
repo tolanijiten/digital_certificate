@@ -60,6 +60,14 @@ $qr_code=$row['qr_image'];
         <link rel="stylesheet" href="../../assets/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> 
+    </script> 
+      
+    <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> 
+    </script> 
+        
+        
         <style>
         .ves{
     
@@ -83,8 +91,8 @@ $qr_code=$row['qr_image'];
 
         </style>
     </head>
-    <body>
-    <div class="ves">
+    <body >
+    <div class="ves" id="html-content-holder">
          <div class="container-fluid"> 
          <div class="text-center">  
             <ul class="list-inline">
@@ -131,6 +139,55 @@ $qr_code=$row['qr_image'];
              </div>
             </div>
             <?php echo "<br>";?>
-        </div>   
+        </div>  
+        
+         
+          <input id="btn-Preview-Image" type="button"
+                value="Preview" />  
+          
+    <a id="btn-Convert-Html2Image" href="#"> 
+        Download 
+    </a> 
+  
+    <br/> 
+      
+<!--    <h3>Preview :</h3> -->
+      
+    <div id="previewImage"></div> 
+      
+    <script> 
+        $(document).ready(function() { 
+            var element = $("#html-content-holder");  
+            var getCanvas;  
+  
+            $("#btn-Preview-Image").on('click', function() { 
+                html2canvas(element, { 
+                    onrendered: function(canvas) { 
+                        $("#previewImages").append(canvas); 
+                        getCanvas = canvas; 
+                        
+                    } 
+                }); 
+                
+            }); 
+  
+            $("#btn-Convert-Html2Image").on('click', function() { 
+                html2canvas(element, { 
+                    onrendered: function(canvas) {
+//                        $("#previewImages").append(canvas); 
+                        getCanvas = canvas; 
+                        
+                    } 
+                })
+                var imgageData = getCanvas.toDataURL("image/png"); 
+                var newData = imgageData.replace( /^data:image\/png/, "data:application/octet-stream"); 
+              
+                $("#btn-Convert-Html2Image").attr( 
+                "download", "Ecertificate.png").attr( 
+                "href", newData); 
+            }); 
+            
+        }); 
+    </script> 
     </body>
 </html>
