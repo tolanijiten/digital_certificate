@@ -2,7 +2,7 @@
 include_once("../../functions/db.php");
 ob_start();
 session_start();
-$organization_id = $_SESSION["organization_id"];// to be uncommented
+//$organization_id = $_SESSION["organization_id"];// to be uncommented
 //$organization_id = 13; //to be commented afterwards when involving sessions
 $template_id=$_GET['template_id'];
 //echo $template_id;
@@ -98,45 +98,69 @@ $template_id=$_GET['template_id'];
                                ?>
                                 <input type="text" class="form-control" id="" placeholder="Organisation Name" name="name" value="VESIT" readonly>
                             </div>
+<!--
+                            
                             <div class="form-group">
                                 <label for="">Logo </label>
-<!--                                <span style="color: red;">Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a></span>-->
+                                <span style="color: red;">Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a></span>
                                 <div style="width: 20px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="file" accept="image/*" id="" name="logo">
                             </div>
+-->
+                            
+                            
                             <div class="form-group">
                                 <label for="">Committee Name</label>  
-<!--                                <span style="color:red;">format(write the committee name,then a underscore and then organization name)</span>-->
+                                <span style="color:red;">format(write the committee name,then a underscore and then year)Eg. ISTE_2020</span>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="text" class="form-control" id="" placeholder="Commitee Name" name="commitee_name">
                             </div>
+<!--
+                            
                             <div class="form-group">
                                 <label for="">Certificate Title</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="text" class="form-control" id="" placeholder="Certificate Title" name="certificate_title">
                             </div>
+-->
+                           
                             <div class="form-group">
                                 <label for="">Date</label>
                                 <div style="width: 30px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="date" class="form-control" id="" name="date">
                             </div>
                             <div class="form-group">
-                                <label for="">Issuer Name</label>
+                                <label for="">First Authority Name</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="text" class="form-control" id="" placeholder="Issuer Name" name="signature_1_name">
                             </div>
                             <div class="form-group">
-                                <label for="">Issuer Signature </label>
-<!--                                <span style="color: red;">Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a></span>-->
+                                <label for="">First Authority Signature </label>
+                                <span style="color: red;">Upload a Transperent png photo
+<!--                                . Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a>-->
+                                
+                                </span>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="file" id="" name="signature_1_photo" class="">
                                    
                             </div>
                             <div class="form-group">
-                                <label for="">Higher Authority Name</label>
+                                <label for="">Second Authority Name</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
                                 <input type="text" class="form-control" id="" placeholder="Higher Authority Name" name="signature_2_name">
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="">Second Authority Signature </label>
+                                <span style="color: red;">Upload a Transperent png photo
+<!--                                . Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a>-->
+                                
+                                </span>
+                                <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
+                                <input type="file" id="" name="higher_authority_signature" class="">
+                                   
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="">Upload Excel Sheet</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
