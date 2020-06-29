@@ -33,10 +33,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus"></i></a>
+        <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus">Add Issuer</i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-eye"></i></a>
+        <a class="nav-link bit_nav" href="#"><i class="fa fa-eye">View</i></a>
       </li>
       <li class="nav-item">
         <a class="logout btn bit_button" href="../classes/login/login.php" >Logout</a>
@@ -61,14 +61,79 @@
                         </tr>
                         
                     </thead>
+                    
+                    <?php
+                        include_once('../../functions/db.php');
+                        $query = "SELECT * FROM users WHERE deleted=0 AND role=1";
+                        $result = mysqli_query($connection,$query);
+                        $row = mysqli_fetch_assoc($result);
+//                        print_r($row);
+                        
+//                        echo $plain;
+                        for($i=1;$i<mysqli_num_rows($result);$i++){
+                        $row = mysqli_fetch_assoc($result);
+                        $username = $row['user_name'];
+                        $email_id = $row['email_id'];
+                        $plain = openssl_decrypt($row['password'], "AES-128-ECB", 'digicert'); 
+//                        echo mysqli_num_rows($result);
+                    ?>
+                    
                     <tbody id="myTable">
                    <tr>
-                       <td>Sanjay Janyani</td>
-                       <td>snajay@gmail.com</td>
-                       <td>qwert</td>
-                       <td><i class="fa fa-edit"></i></td>
-                       <td><i class="fa fa-trash-alt"></i></td>
+                       <td><?php echo $username; ?></td>
+                       <td><?php echo $email_id; ?></td>
+                       <td><?php echo $plain; ?></td>
+                       <td><a href="edit.php"><i class="fa fa-edit"></i></a></td>
+                       <td><a href="delete.php" name="delete_btn"><i class="fa fa-trash-alt"></i></a></td>
                    </tr>
+                   <?php
+                        }
+                         ?>
+                         
+        <div class="modal fade" tabindex="-1" role="dialog" id="verifyModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h4 class="modal-title">Verify All Certificates</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <form action="qr_generation.php" method="POST" enctype="multipart/form-data">
+                            <div class="form-body">
+                                <div class="form-group clearfix">
+
+                                    <div class="col-md-9">
+                                       <label for="">Upload your Signature <span style="color: red;">Please Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtool</a></span></label>
+                                        <input type="file" id="edit_category_id" name="higher_authority_signature"> 
+                                    </div>
+                                    
+                                    <div class="col-md-9">
+                                        <input type="hidden" id="edit_category_id" name="generation_id" value="<?php echo $generation_id; ?>" > 
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #204a84; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<!--
                    <tr>
                        <td>Sanjay Janyani</td>
                        <td>snajay@gmail.com</td>
@@ -181,6 +246,7 @@
                        <td><i class="fa fa-edit"></i></td>
                        <td><i class="fa fa-trash-alt"></i></td>
                    </tr>
+-->
                         
                     </tbody>
                 </table>

@@ -70,7 +70,7 @@
                         </div><!--End of category-heading-->
                     </div><!-- End of Form Title-->
                     <div class="form-content">
-                        <form action="" method="POST">
+                        <form action="add.php" method="POST">
                         <div class="row">
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
