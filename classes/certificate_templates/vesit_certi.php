@@ -1,60 +1,56 @@
 <?php
 include_once("../../functions/db.php");
 session_start();
-$organisation_id=$_SESSION['organization_id'];
+//$organisation_id=$_SESSION['organization_id'];
 
-$generation_id=$_GET['generation_id'];
+$committee_id=$_GET['committe_id'];
 $student_id=$_GET['student_id'];
+
+/*-----------------------Decrypting--------------------*/
+$encryption_key = "DigiCertificate"; 
+$ciphering = "BF-CBC";   
+$iv_length = openssl_cipher_iv_length($ciphering); 
+$options = 0;   
+$encryption_iv = '12345678';   
+$committe_id_dehash = openssl_decrypt($committee_id, $ciphering, 
+$encryption_key, $options, $encryption_iv);
+
+$student_id_dehash= openssl_decrypt($student_id, $ciphering, 
+$encryption_key, $options, $encryption_iv);
+//echo $committe_id_dehash;
+//echo $student_id_dehash;
 //echo $generation_id;
 //echo $student_id;
-$query="Select * from generation where generation_id=$generation_id";
+/*------------------------------------------------------*/
+
+$query="Select * from generation where generation_id=$committe_id_dehash";  
 $result=mysqli_query($connection,$query);
+
 $row=mysqli_fetch_assoc($result);
 $certificate_title=$row['certificate_title'];
-$signature_1=$row['issuer_name'];
-$signature_2=$row['higher_authority_name'];
+$authority_1_name=$row['authority_1_name'];
+$authority_2_name=$row['authority_1_name'];
 $date=$row['date'];
-$issuer_signature=$row['issuer_signature'];
-//echo $issuer_signature;
-$higher_authority_signature=$row['higher_authority_signature'];
-//echo $higher_authority_signature;
-//$qr_code=$row[''];
+$authority_1_signature=$row['authority_1_signature'];
+$authority_2_signature=$row['authority_2_signature'];
 $committee_name=$row['commitee_name'];
-//echo $committee_name;
 $logo=$row['logo'];
 
 
 
-$query="select * from $committee_name where student_id=$student_id";
+$query="select * from $committee_name where student_id=$student_id_dehash";
 $result=mysqli_query($connection,$query);
 $row=mysqli_fetch_assoc($result);
 $student_name=$row['student_name'];
-$field=$row['field'];
+$year=$row['year'];
+$department=$row['department'];
 $class=$row['class'];
 $rank=$row['rank'];
+$field=$row['field'];
+$score=$row['score'];
 $qr_code=$row['qr_image'];
-//echo $qr_code;
 
 
-
-
-
-
-//$student_name = "Vishal Israni";
-//$field = "Academics";
-//$rank = "1st";
-//$class= "D15";
-$query="select * from organization where organization_id=$organisation_id";
-$result=mysqli_query($connection,$query);
-$row=mysqli_fetch_assoc($result);
-$organisation_name=$row['name'];
-
-//$organisation_name = "VIVEKANAND INSTITUTE OF TECHNOLOGY";
-//$date = "22/07/2018";
-//$signature_1 = "Signature";
-//$signature_2 = "Signature";
-//$certificate_title = "Certificate of Achievement";
-//$committee_name = "CSI";
 
 ?>
 <html>
@@ -64,6 +60,14 @@ $organisation_name=$row['name'];
         <link rel="stylesheet" href="../../assets/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> 
+    </script> 
+      
+    <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> 
+    </script> 
+        
+        
         <style>
         .ves{
     
@@ -87,8 +91,8 @@ $organisation_name=$row['name'];
 
         </style>
     </head>
-    <body>
-    <div class="ves">
+    <body >
+    <div class="ves" id="html-content-holder">
          <div class="container-fluid"> 
          <div class="text-center">  
             <ul class="list-inline">
@@ -96,7 +100,7 @@ $organisation_name=$row['name'];
                 <li style="margin-top:30px;"><p class="tops"><b>VIVEKANAND EDUCATION SOCIETY'S <br>INSTITUTE OF TECHNOLOGY</b></p>
                   
                 </li>
-                <li><img src="../higher_authority/images/<?php echo $qr_code?>" style="margin: 0px 25px" alt=""></li>
+                <li><img src="../issuer/images/<?php echo $qr_code?>" style="margin: 0px 25px" alt=""></li>
 
             </ul>
             </div>
@@ -107,16 +111,15 @@ $organisation_name=$row['name'];
              <div class="font-specifications">
              <div class="text-center content">
                  <span class="first">This certificate is proudly presented to  </span>
-<!--                 <span id="input_name"><u><?php //echo $student_name;?></u></span>&nbsp;&nbsp;&nbsp;<span class="first">of &nbsp;</span><span>_____&nbsp;</span><span>year,&nbsp;&nbsp;</span><span id="input_class"><u><?php echo $class;?></u></span><span class="next">&nbsp;&nbsp;&nbsp;Dept. for</span> -->
-         
+
              </div>
              <div class="text-center content">
                  <span id="input_name"><u><?php echo $student_name;?></u></span>
              </div>
-             <div class="text-center content"><span class="first">of &nbsp;</span><span>_____&nbsp;</span><span>year,&nbsp;&nbsp;</span><span id="input_class"><u><?php echo $class;?></u></span><span class="next">&nbsp;&nbsp;&nbsp;Dept. for</span> &nbsp;<span class="first">securing&nbsp;&nbsp;&nbsp;</span><span id="input_position"><u><?php echo $rank; ?></u></span>&nbsp;&nbsp;&nbsp;<span class="first">position in &nbsp;</span><span id="input_event"><u><?php echo $field;?></u></span><span class="next">&nbsp;&nbsp;&nbsp;</span> 
+             <div class="text-center content"><span class="first">of &nbsp;</span><span><?php echo $year;?></span><span> year,&nbsp;&nbsp;</span><span id="input_class"><u><?php echo $department;?></u></span><span class="next">&nbsp;&nbsp;&nbsp;Dept. for</span> &nbsp;<span class="first">securing&nbsp;&nbsp;&nbsp;</span><span id="input_position"><u><?php echo $rank; ?></u></span>&nbsp;&nbsp;&nbsp;<span class="first">position in &nbsp;</span><span id="input_event"><u><?php echo $field;?></u></span><span class="next">&nbsp;&nbsp;&nbsp;</span> 
                  </div>
              <div class="text-center" style="margin-top:50px;">
-                 <span class="first">Date: xxxx,2020</span> 
+                 <span class="first">Date: <?php echo $date ?></span> 
          
              </div>
              
@@ -125,16 +128,66 @@ $organisation_name=$row['name'];
              <div class="container">
                 <div class="row">
              <div class="col-md-6 col-sm-6 text-center">
-                 <p class="content3"><image style="height: 50px; width: 120px" src="../issuer/images/issuer_signature/<?php echo  $issuer_signature;?>"></image></p>
-                 <p class="content4 text-center">Department HOD </p>
+                 <p class="content3"><image style="height: 50px; width: 120px" src="../issuer/images/authority_1_signature/<?php echo  $authority_1_signature;?>"></image></p>
+                 <p class="content4 text-center"><?php echo $authority_1_name?> </p>
              </div>
              <div class="col-md-6 col-sm-6 text-center">
-                 <p class="content3"><image  style="height: 50px; width: 120px" src="../higher_authority/images/higher_authority_signature/<?php echo $higher_authority_signature ?>"></image></p>
+                 <p class="content3"><image  style="height: 50px; width: 120px" src="../issuer/images/authority_2_signature/<?php echo $authority_2_signature ?>"></image></p>
                  <p class="content4">Principal / Vice Pricipal</p>
              </div>
              </div>
              </div>
             </div>
-        </div>   
+            <?php echo "<br>";?>
+        </div>  
+        
+         
+          <input id="btn-Preview-Image" type="button"
+                value="Preview" />  
+          
+    <a id="btn-Convert-Html2Image" href="#"> 
+        Download 
+    </a> 
+  
+    <br/> 
+      
+<!--    <h3>Preview :</h3> -->
+      
+    <div id="previewImage"></div> 
+      
+    <script> 
+        $(document).ready(function() { 
+            var element = $("#html-content-holder");  
+            var getCanvas;  
+  
+            $("#btn-Preview-Image").on('click', function() { 
+                html2canvas(element, { 
+                    onrendered: function(canvas) { 
+                        $("#previewImages").append(canvas); 
+                        getCanvas = canvas; 
+                        
+                    } 
+                }); 
+                
+            }); 
+  
+            $("#btn-Convert-Html2Image").on('click', function() { 
+                html2canvas(element, { 
+                    onrendered: function(canvas) {
+//                        $("#previewImages").append(canvas); 
+                        getCanvas = canvas; 
+                        
+                    } 
+                })
+                var imgageData = getCanvas.toDataURL("image/png"); 
+                var newData = imgageData.replace( /^data:image\/png/, "data:application/octet-stream"); 
+              
+                $("#btn-Convert-Html2Image").attr( 
+                "download", "Ecertificate.png").attr( 
+                "href", newData); 
+            }); 
+            
+        }); 
+    </script> 
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Add Issuer</title>
+   <title>View Issuer</title>
    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
@@ -66,16 +66,11 @@
                         include_once('../../functions/db.php');
                         $query = "SELECT * FROM users WHERE deleted=0 AND role=1";
                         $result = mysqli_query($connection,$query);
-                        $row = mysqli_fetch_assoc($result);
-//                        print_r($row);
-                        
-//                        echo $plain;
-                        for($i=1;$i<mysqli_num_rows($result);$i++){
+                        for($i=1; $i<=mysqli_num_rows($result); $i++){
                         $row = mysqli_fetch_assoc($result);
                         $username = $row['user_name'];
                         $email_id = $row['email_id'];
                         $plain = openssl_decrypt($row['password'], "AES-128-ECB", 'digicert'); 
-//                        echo mysqli_num_rows($result);
                     ?>
                     
                     <tbody id="myTable">

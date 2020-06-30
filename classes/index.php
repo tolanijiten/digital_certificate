@@ -1,4 +1,10 @@
 <!doctype html>
+<?php 
+//session_start();
+//$user_id=$_SESSION['user_id'];
+//echo $user_id;
+//exit;
+?> 
 <html lang="en">
 
 <head>
@@ -168,7 +174,7 @@
 
 
 
-	<div class="container-fluid" style="margin-top:60px;background-color:#204a84;">
+	<div class="container-fluid" style="margin-top:60px;background-color:#337ab7;">
 		<div class="row">
 			<div class="col-md-6 " data-tilt>
 				<img src="../assets/images/2.png" alt="">
