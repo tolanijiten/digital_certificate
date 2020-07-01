@@ -51,133 +51,143 @@ $score=$row['score'];
 $qr_code=$row['qr_image'];
 
 
-
-
-//$student_name = "Vishal Israni";
-//$field = "Academics";
-//$rank = "1st";
-//$class= "D15";
-//$query="select * from organization where organization_id=$organisation_id";
-//$result=mysqli_query($connection,$query);
-//$row=mysqli_fetch_assoc($result);
-//$organisation_name=$row['name'];
-
-//$organisation_name = "VIVEKANAND INSTITUTE OF TECHNOLOGY";
-//$date = "22/07/2018";
-//$signature_1 = "Signature";
-//$signature_2 = "Signature";
-//$certificate_title = "Certificate of Achievement";
-//$committee_name = "CSI";
-
 ?>
 <html>
-    <head>
-        <title>E certi</title>
-        <link rel="stylesheet" href="../../assets/css/styles.css">
-        <link rel="stylesheet" href="../../assets/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-        
-    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> 
-    </script> 
-      
-    <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> 
-    </script> 
-    </head>
-    <body>
-    <div class="main" id="html-content-holder">
-         <div class="container-fluid"> 
-         <div class="text-center">
-           <p class="text-left content content4"  style="margin-top:25px; margin-bottom:0;">Sr.no <?php echo $student_id_dehash?></p>   
-            <ul class="list-inline">
-                <li><img src="../../assets/images/certificate_inside_images/logo.png" style="margin:0px 25PX 0PX 25PX"></li>
 
-            </ul>
+<head>
+    <title>E certi</title>
+    <link rel="icon" href="../../assets/images/ves_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+</head>
+
+<body>
+    <?php
+    require_once("nav_certi.php");
+    ?>
+    <div class="main" id="html-content-holder" style="margin-top:60px;">
+        <div class="container-fluid">
+            <div class="text-center">
+                <p class="text-left content content4" style="margin-top:25px; margin-bottom:0;">Sr.no
+                    <?php echo $student_id_dehash?>
+                </p>
+                <ul class="list-inline">
+                    <li><img src="../../assets/images/certificate_inside_images/logo.png" style="margin:0px 25PX 0PX 25PX"></li>
+
+                </ul>
             </div>
             <p class="own">Certificate Of Completion</p>
             <p class="own">VESIT-NPTEL Value Added Course</p>
+        </div>
+        <br>
+        <br>
+        <div class="font-specifications">
+            <div class="text-center content">
+                <span class="first">This Certificate is awarded to</span>
             </div>
-            <br>
-            <br>
-             <div class="font-specifications">
-             <div class="text-center content">
-                 <span class="first">This Certificate is awarded to</span> 
-             </div>
-             <div class="text-center content">
-                 <span class="first"><u><?php echo $student_name;?></u></span> 
-             </div>
-             <div class="text-left content" style="line-height: 2;">
-                 <span class="first">of &nbsp; <?php echo $year; ?> &nbsp; year , &nbsp; <u><?php echo $department;?></u> &nbsp; Dept. for successfully completing Institute level examination conducted for Swayam NPTEL Course &nbsp; <u><?php echo $field;?></u></span> 
-             </div>
-             </div>
-             <div style="margin-top: 50px;">
-             <div class="content3" style="margin-bottom: 20px;"><span>Date: <?php echo $date;?> </span></div>
-             <div class="container">
-                <div class="row">
-             <div class="col-md-4 col-sm-4 text-center">
-                 <p class="content3"><image style="height: 50px; width: 120px" src="../issuer/images/authority_1_signature/<?php echo  $authority_1_signature;?>"></image></p>
-                 <p class="content4 text-center">VESIT NPTEL Chapter, Department Incharge </p>
-             </div>
-             <div class="col-md-4 col-sm-4 text-right">
-                 <p class="content3"><image  style="height: 50px; width: 120px" src="../issuer/images/authority_2_signature/<?php echo $authority_2_signature ?>"></image></p>
-                 <p class="content4">Principal / Vice Pricipal</p>
-             </div>
-             <div class="col-md-2 text-right" >
-                 <img src="../issuer/images/<?php echo $qr_code?>" style="height: 55px; width: 55px;">
-             </div>
-             </div>
-             </div>
+            <div class="text-center content">
+                <span class="first"><u>
+                        <?php echo $student_name;?></u></span>
             </div>
-        </div>  
-        
-<!--
+            <div class="text-left content" style="line-height: 2;">
+                <span class="first">of &nbsp;
+                    <?php echo $year; ?> &nbsp; year , &nbsp; <u>
+                        <?php echo $department;?></u> &nbsp; Dept. for successfully completing Institute level examination conducted for Swayam NPTEL Course &nbsp; <u>
+                        <?php echo $field;?></u></span>
+            </div>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="content3" style="margin-bottom: 20px;"><span>Date:
+                    <?php echo $date;?> </span></div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p class="content3">
+                        <image style="height: 50px; width: 120px" src="../issuer/images/authority_1_signature/<?php echo  $authority_1_signature;?>"></image>
+                    </p>
+                    <p class="content4 text-center">VESIT NPTEL Chapter, Department Incharge </p>
+                </div>
+                <div class="col-md-6 col-sm-6 text-center">
+                    <p class="content3">
+                        <image style="height: 50px; width: 120px" src="../issuer/images/authority_2_signature/<?php echo $authority_2_signature ?>"></image>
+                    </p>
+                    <p class="content4">Principal / Vice Pricipal</p>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <img src="../issuer/images/<?php echo $qr_code?>" style="height: 65px; width: 65px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
          <input id="btn-Preview-Image" type="button"
                 value="Preview" />  
 -->
-          
+    <!--
+     <div class="row">
+         <div class="col-md-12 col-sm-12 text-center">
+          <a id="btn-Convert-Html2Image" class="btn btn-primary" href="#"> 
+        Download 
+    </a>    
+         </div>
+     </div>     
+-->
+    <!--
     <a id="btn-Convert-Html2Image" style="margin-left:725px;" class="btn btn-primary" href="#"> 
         Download 
     </a> 
-  
-    <br/> 
-      
-<!--    <h3>Preview :</h3> -->
-      
-    <div id="previewImage"></div> 
-      
-    <script> 
-        $(document).ready(function() { 
-            var element = $("#html-content-holder");  
-            var getCanvas;  
-  
-            $("#btn-Preview-Image").on('click', function() { 
-                html2canvas(element, { 
-                    onrendered: function(canvas) { 
-                        $("#previewImages").append(canvas); 
-                        getCanvas = canvas; 
-                        
-                    } 
-                }); 
-                
-            }); 
-  
-            $("#btn-Convert-Html2Image").on('click', function() { 
-                html2canvas(element, { 
+-->
+
+    <br />
+
+    <!--    <h3>Preview :</h3> -->
+
+    <div id="previewImage"></div>
+    <script src="../../assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+    <script>
+        $(document).ready(function() {
+            var element = $("#html-content-holder");
+            var getCanvas;
+
+            $("#btn-Preview-Image").on('click', function() {
+                html2canvas(element, {
                     onrendered: function(canvas) {
-//                        $("#previewImages").append(canvas); 
-                        getCanvas = canvas; 
-                        
-                    } 
+                        $("#previewImages").append(canvas);
+                        getCanvas = canvas;
+
+                    }
+                });
+
+            });
+
+            $("#btn-Convert-Html2Image").on('click', function() {
+                html2canvas(element, {
+                    onrendered: function(canvas) {
+                        //                        $("#previewImages").append(canvas); 
+                        getCanvas = canvas;
+
+                    }
                 })
-                var imgageData = getCanvas.toDataURL("image/png"); 
-                var newData = imgageData.replace( /^data:image\/png/, "data:application/octet-stream"); 
-              
-                $("#btn-Convert-Html2Image").attr( 
-                "download", "Ecertificate.png").attr( 
-                "href", newData); 
-            }); 
-            
-        }); 
-    </script> 
-    </body>
+                var imgageData = getCanvas.toDataURL("image/png");
+                var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+
+                $("#btn-Convert-Html2Image").attr(
+                    "download", "Ecertificate.png").attr(
+                    "href", newData);
+            });
+
+        });
+
+    </script>
+</body>
+
 </html>
