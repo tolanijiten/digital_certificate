@@ -28,6 +28,7 @@ function display_students(){
         $class = $row2['class'];
         $rank = $row2['rank'];
         $field= $row2['field'];
+        $score = $row2['score'];
         $email= $row2['email'];
 
         echo"<tr>";
@@ -35,6 +36,7 @@ function display_students(){
         echo"<td>{$class}</td>";
         echo"<td>{$rank}</td>";
         echo"<td>{$field}</td>";
+        echo"<td>{$score}</td>";
         echo"<td>{$email}</td>";
         echo"<td><a href='#' class='btn btn-info'><i class='fa fa-edit'></i></a></td>";
         echo"<td><a href='#' class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='$student_id' data-vendor=$student_id><i class='fa fa-trash'></i></a></td>";
@@ -105,6 +107,7 @@ function display_students(){
                             <th>Class</th>
                             <th>Rank</th>
                             <th>Field</th>
+                            <th>Score</th>
                             <th>Email</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -142,7 +145,7 @@ function display_students(){
                 <div class="modal-body">
 
                     <div class="row">
-                        <form action="" method="POST" enctype="" style="width:100%">
+                        <form action="delete_record.php" method="POST" enctype="" style="width:100%">
                             <div class="form-body">
                                 <div class="form-group clearfix">
 
@@ -151,13 +154,16 @@ function display_students(){
                                     </div>
                                     
                                     <div class="col-md-12">
-                                        <input type="text" name="generation_id" id="stud_form_delete_id"> 
+                                        <input type="hidden" name="student_id" id="stud_form_delete_id"> 
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="hidden" name="generation_id" id="generation_id" value="<?php echo $generation_id;?>"> 
                                     </div>
                                     
                                 </div>
                                 
                                 <div class="modal-footer">
-                                    <button id="" type="submit" class="btn btn-danger" name="verify"><i class="fa fa-trash"></i> Delete</button>
+                                    <button id="" type="submit" class="btn btn-danger" name="delete_record"><i class="fa fa-trash"></i> Delete</button>
                                 </div>
 
                             </div>
@@ -186,7 +192,7 @@ $(document).ready(function() {
 
     $(".open-delete-modal").click(function() {
         $stud_id = $(this).attr('id');
-        window.alert($stud_id);  
+        //window.alert($stud_id);  
 
      $("#stud_form_delete_id").val($stud_id);
        
