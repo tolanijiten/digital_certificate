@@ -2,6 +2,8 @@
 <html>
 
 <head>
+       <title>Generate Certificate</title>
+   <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 	
@@ -167,22 +169,8 @@
 </head>
 
 <body style="margin:0;background-color:#f9f9f9">
-
-	<nav class="navbar-light bg-light" style="margin-top:20px;margin-left:800px;font-size:16px;">
-		<ul class="nav justify-content-left-end">
-			<li class="nav-item">
-				<a class="nav-link active bit_nav bit_nav1" href="#" style="color:#B0413E ">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#contact" style="color:#B0413E ">Contact</a>
-			</li>
-            <li class="nav-item ">
-				<a class="logout btn bit_button" href="../classes/login/login.php" style="color:#fff;background-color:#b0413e; margin-top:5px;">Log Out</a>
-			</li>
-
-
-		</ul>
-	</nav>
+<?php require_once("navbar.php"); ?> 
+    
 
 	
 	<div class="container-fluid" style="margin-top:40px;color:#B0413E;">

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Add Issuer</title>
+   <title>View Issuer</title>
    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="scripts/toastr.min.css">
+
    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
    
@@ -70,75 +72,75 @@
 //                        $admin_id=$_SESSION['user_id'];
                         $admin_id=1;
                         $result = mysqli_query($connection,$query);
-                        $row = mysqli_fetch_assoc($result);
-//                        print_r($row);
-                        
-//                        echo $plain;
-                        for($i=1;$i<mysqli_num_rows($result);$i++){
+                        for($i=1; $i<=mysqli_num_rows($result); $i++){
                         $row = mysqli_fetch_assoc($result);
                         $user_id = $row['user_id'];
-                        echo $user_id;
+//                        echo $user_id;
                         $username = $row['user_name'];
                         $email_id = $row['email_id'];
                         $plain = openssl_decrypt($row['password'], "AES-128-ECB", 'digicert'); 
+
 //                        echo mysqli_num_rows($result);
                     ?>              
+
                     <tbody id="myTable">
                    <tr>
                        <td><?php echo $username; ?></td>
                        <td><?php echo $email_id; ?></td>
                        <td><?php echo $plain; ?></td>
                        <td><i class="fa fa-edit"></i></td>
-                       <td><a href="delete.php?user_id=<?php echo $user_id?>"><i class="fa fa-trash-alt"></i></a></td>
+                       <td><a href="delete.php?user_id=<?php echo $user_id?>" class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='<?php echo $user_id; ?>' data-vendor='<?php $user_id ?>'  ><i class='fa fa-trash'></i></a></td>
+  
                    </tr>
                    <!--Edit Button Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        Edit UserName : <input type="text" value=""><br><br>
-        Edit Email : <input type="text" value=""><br><br>
-        Edit Password : <input type="text">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-                  
+                 
 <!--DELETE BUTTON MODAL-->
-                            <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-<!--                                    <h5 class="modal-title">Modal title</h5>-->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">Delete??</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p>Are you sure, you want to delete this entry?</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                   <form action="http://localhost/ecertificate/classes/admin/delete.php?user_id=<?php echo $user_id; ?>" method="GET">
-                                        <button type="submit" class="btn red" name="deleteBtn">Yes</button>
-                                        <button type="button" class="btn blue" data-dismiss="modal">No</button>
-                                   </form>
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h4 class="modal-title">Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <form action="delete.php" method="POST" enctype="" style="width:100%">
+                            <div class="form-body">
+                                <div class="form-group clearfix">
+
+                                    <div class="col-md-12">
+                                        <p style="font-size:20px;">Do you really want to delete the record?</p>
+                                    </div>
                                     
-                                  </div>
+                                    <div class="col-md-12">
+                                        <input type="hidden" id="stud_form_delete_id" name='stud_form_delete_id'>
+                                    </div>
+                                    
                                 </div>
-                              </div>
+                                
+                                
+                                <div class="modal-footer">
+                                   
+                                    <button href="delete.php?user_id=stud_form_delete_id"  id="" type="submit" class="btn btn-danger" name="deleteBtn"><i class="fa fa-trash"></i> Yes</button>
+                                    <button id="" type="submit" class="btn btn-primary" > No</button>
+                                    
+                                </div>
+                                    
                             </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
                             <!--END OF DELETE BUTTON MODAL-->                  
                    <?php
                         }
@@ -274,11 +276,33 @@
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
  <script src="../../assets/js/bootstrap.min.js"></script>
+ <script src="scripts/toastr.min.js"></script>
 <!--
  <script src="scripts/manage-issuer.js" type="text/javascript"></script>
  <script src="scripts/datatable.js" type="text/javascript"></script>
  <script src="scripts/datatables.min.js" type="text/javascript"></script>
 -->
+
+ <script> 
+$(document).ready(function() {
+   $(".open-delete-modal").click(function() {
+    
+     $("#deleteModal").modal("show");
+  }),
+
+    $(".open-delete-modal").click(function() {
+        $stud_id = $(this).attr('id');
+//        window.alert($stud_id);  
+
+     $("#stud_form_delete_id").val($stud_id);
+       
+  });
+    
+    
+    
+    
+});
+</script>
  <script>
     $.fn.pageMe = function(opts){
     var $this = this,
@@ -386,7 +410,69 @@ $(document).ready(function(){
     
   $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
     
-});</script>
+});
+     
+     
+     
+     
+     <?php
+if(isset($_SESSION['delete_user'])){
+    ?>
+toastr["error"]("You Have Successfully Deleted", "User Deleted");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['delete_user']);
+}
+    ?>
+
+     
+     <?php
+if(isset($_SESSION['add_user'])){
+    ?>
+toastr["success"]("You Have Successfully Added User", "User Added");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['add_user']);
+}
+    ?>
+
+</script>
     
 </body>
 </html>

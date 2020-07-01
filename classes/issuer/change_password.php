@@ -1,7 +1,19 @@
+<?php
+require_once('../../functions/db.php');
+session_start();
+$user_id=$_SESSION['user_id'];
+$query="select * from users where user_id=$user_id";
+$result=mysqli_query($connection,$query);
+$result_set=mysqli_fetch_assoc($result);
+$logged_in=$result_set['logged_in'];
+//echo $logged_in;
+//exit;
+if($logged_in==0){
+?>
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Add Issuer</title>
+   <title>Change Password</title>
    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
@@ -36,6 +48,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+<!--
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
         <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus"></i></a>
@@ -46,12 +59,11 @@
       <li class="nav-item">
         <a class="logout btn bit_button" href="../classes/login/login.php" >Logout</a>
       </li>
-<!--
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
--->
     </ul>
+-->
 <!--
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search">
@@ -65,46 +77,48 @@
           <div class="inner-container" style="">
            <div class="form-title">
                         <div class="category-heading text-center">
-                            <h3  class="text-heading" style="font-size: 30px;">Add Issuer</h3>
+                            <h3  class="text-heading" style="font-size: 30px;">Chnage Password</h3>
                             <div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
                         </div><!--End of category-heading-->
                     </div><!-- End of Form Title-->
                     <div class="form-content">
-                        <form action="add.php" method="POST" onsubmit="return validate()">
-                        <div class="row">
+                       
+                        <form action="change_password_process.php" method="POST" onsubmit="return velidate()">
+                            <div class="row">
                             <div class="col-md-5 ">
 <!--                            <span style="color: red;">Invalid</span>-->
                                 </div>
                                 <div class="col-md-6 ">
-                            <h5><span style="color: red; display:none" id="incomplete">Form Incomplete!!</span></h5>
-                            
+                            <span style="color: red; display:none" id="incomplete">Form Incomplete!!</span>
+                            <span style="color: red; display:none" id="pswrd">Confirm Password doesnot match!!</span>
 
                                 </div>
                             </div>
                         <div class="row">
+                           
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
-                                <label for="">Name</label>
+                                <label for="">Previous Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="text" class="form-control" id="issuer_name" placeholder="Name" name="issuer_name">
+                                <input type="text" class="form-control" id="previous_password" placeholder="Enter Passowrd recived form Admin" name="previous_password">
                             </div> 
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
-                                <label for="">Email</label>
+                                <label for="">New Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="email" class="form-control" id="issuer_email" placeholder="Email" name="issuer_email">
+                                <input type="password" class="form-control" id="new_password" placeholder="New Password" name="new_password">
                             </div> 
                             </div>
                         </div>
                             <div class="row">
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
-                                <label for="">Password</label>
+                                <label for="">Confirm Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="text" class="form-control" id="issuer_password" placeholder="Password" name="issuer_password">
+                                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password">
                             </div>
                             </div>
                         </div>
@@ -115,6 +129,8 @@
                                 </div>
                             </div>
                         </form>
+                        
+                        
                     </div><!-- End of Form Content-->
            </div><!--End of inner container-->
        </div><!-- End of Container-->
@@ -130,27 +146,37 @@
 </footer>
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
- <script src="../../assets/js/bootstrap.min.js"></script>    
- <script>
-        function validate(){
+ <script src="../../assets/js/bootstrap.min.js"></script>   
+ 
+  <script>
+    function velidate(){
         
-        var issuer_name=document.getElementById("issuer_name").value;
-        var issuer_email=document.getElementById("issuer_email").value;
-        var issuer_password=document.getElementById("issuer_password").value;
+        var prev_pass=document.getElementById("previous_password").value;
+        var new_pass=document.getElementById("new_password").value;
+        var cnf_pass=document.getElementById("confirm_password").value;
         
-        if(issuer_name == "" || issuer_email=="" || issuer_password=="" ){
+        if(prev_pass == "" || new_pass=="" || cnf_pass=="" ){
         var x = document.getElementById("incomplete");
             if (x.style.display === "none") {
                 x.style.display = "block";
             }
             return false;
+        }else if(new_pass != cnf_pass){
+//            window.alert("cnf");
+            var y = document.getElementById("pswrd");
+            if (y.style.display === "none") {
+                y.style.display = "block";
+                return false;
+            }
         }
 //        window.alert(prev_pass);
 
     }
-     
-     
-
-    </script>
+    </script> 
 </body>
 </html>
+<?php 
+    }else{
+        header("Location: ../issuer/select_template.php");
+} 
+?>
