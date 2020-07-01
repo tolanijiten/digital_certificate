@@ -73,18 +73,50 @@ $qr_code=$row['qr_image'];
 <html>
     <head>
         <title>E certi</title>
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">
+
         <link rel="stylesheet" href="../../assets/css/styles.css">
+        <link rel="stylesheet" href="../../assets/css/main.css">
         <link rel="stylesheet" href="../../assets/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         
-    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> 
-    </script> 
-      
-    <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> 
-    </script> 
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script>   
+    <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> </script> 
+    
     </head>
     <body>
+    
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+         <img src="../../assets/images/ves_logo.png" height="40px;" style="margin-left:80px;">
+         
+          <a class="navbar-brand" href="#">Vivekanad Education Society Institute of Technology</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+<!--
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+              <li class="nav-item">
+                <a class="nav-link bit_nav" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bit_nav" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bit_nav" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="logout btn bit_button" href="../login/logout.php" >Logout</a>
+              </li>
+            </ul>
+          </div>
+-->
+        </nav>
+
+    
     <div class="main" id="html-content-holder">
          <div class="container-fluid"> 
          <div class="text-center">
@@ -145,6 +177,8 @@ $qr_code=$row['qr_image'];
       
     <div id="previewImage"></div> 
       
+    <script src="../../assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
     <script> 
         $(document).ready(function() { 
             var element = $("#html-content-holder");  
