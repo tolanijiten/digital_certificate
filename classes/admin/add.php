@@ -1,5 +1,8 @@
 <?php
 include_once('../../functions/db.php');
+session_start();
+//$admin_id=$_SESSION['user_id'];
+$admin_id=1;
 if(isset($_POST['submit_generation'])){
 //    echo 'here';
     $issuer_name = $_POST['issuer_name'];
@@ -17,6 +20,7 @@ if(isset($_POST['submit_generation'])){
         die("Query Failed : ". mysqli_error($connection));
         echo $query;
     }
+    $_SESSION["add_user"]=1;
     header("Location: http://localhost/ecertificate/classes/admin/view_issuer.php");
         
 }
