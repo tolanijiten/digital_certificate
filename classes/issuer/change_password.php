@@ -14,6 +14,8 @@ if($logged_in==0){
 <html>
 <head>
    <title>Change Password</title>
+   <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">	<meta charset="UTF-8">
+
    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
@@ -23,7 +25,16 @@ if($logged_in==0){
    
         body{
 	font-family: "Nunito Sans", sans-serif;
-	
+/*    background-image: url("../../assets/images/vesit_certi.png");*/
+/*    background-color: #cccccc;*/
+/*
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: 50%;
+*/
 /*	background:#f8f8f8;*/
             
 }

@@ -6,6 +6,8 @@
 
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="scripts/toastr.min.css">
+
    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
    
@@ -50,7 +52,7 @@
                <div class="container">
                    <div class="row">
                     <div class="table-responsive text-nowrap">
-                     <table class="table table-striped table-hover table-bordered">
+                     <table class="table table-striped table-hover table-bordered" id="details">
                     <thead style="color:#204a84;">
                         <tr>
                             <th>Name</th>
@@ -64,57 +66,68 @@
                     
                     <?php
                         include_once('../../functions/db.php');
+                        session_start();
+                        
                         $query = "SELECT * FROM users WHERE deleted=0 AND role=1";
+//                        $admin_id=$_SESSION['user_id'];
+                        $admin_id=1;
                         $result = mysqli_query($connection,$query);
                         for($i=1; $i<=mysqli_num_rows($result); $i++){
                         $row = mysqli_fetch_assoc($result);
+                        $user_id = $row['user_id'];
+//                        echo $user_id;
                         $username = $row['user_name'];
                         $email_id = $row['email_id'];
                         $plain = openssl_decrypt($row['password'], "AES-128-ECB", 'digicert'); 
-                    ?>
-                    
+
+//                        echo mysqli_num_rows($result);
+                    ?>              
+
                     <tbody id="myTable">
                    <tr>
                        <td><?php echo $username; ?></td>
                        <td><?php echo $email_id; ?></td>
                        <td><?php echo $plain; ?></td>
-                       <td><a href="edit.php"><i class="fa fa-edit"></i></a></td>
-                       <td><a href="delete.php" name="delete_btn"><i class="fa fa-trash-alt"></i></a></td>
+                       <td><i class="fa fa-edit"></i></td>
+                       <td><a href="delete.php?user_id=<?php echo $user_id?>" class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='<?php echo $user_id; ?>' data-vendor='<?php $user_id ?>'  ><i class='fa fa-trash'></i></a></td>
+  
                    </tr>
-                   <?php
-                        }
-                         ?>
-                         
-        <div class="modal fade" tabindex="-1" role="dialog" id="verifyModal">
+                   <!--Edit Button Modal -->
+                 
+<!--DELETE BUTTON MODAL-->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                   <h4 class="modal-title">Verify All Certificates</h4>
+                   <h4 class="modal-title">Delete</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
                 <div class="modal-body">
 
                     <div class="row">
-                        <form action="qr_generation.php" method="POST" enctype="multipart/form-data">
+                        <form action="delete.php" method="POST" enctype="" style="width:100%">
                             <div class="form-body">
                                 <div class="form-group clearfix">
 
-                                    <div class="col-md-9">
-                                       <label for="">Upload your Signature <span style="color: red;">Please Upload a Transperent png. Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtool</a></span></label>
-                                        <input type="file" id="edit_category_id" name="higher_authority_signature"> 
+                                    <div class="col-md-12">
+                                        <p style="font-size:20px;">Do you really want to delete the record?</p>
                                     </div>
                                     
-                                    <div class="col-md-9">
-                                        <input type="hidden" id="edit_category_id" name="generation_id" value="<?php echo $generation_id; ?>" > 
+                                    <div class="col-md-12">
+                                        <input type="hidden" id="stud_form_delete_id" name='stud_form_delete_id'>
                                     </div>
                                     
                                 </div>
                                 
+                                
                                 <div class="modal-footer">
-                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #204a84; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
+                                   
+                                    <button href="delete.php?user_id=stud_form_delete_id"  id="" type="submit" class="btn btn-danger" name="deleteBtn"><i class="fa fa-trash"></i> Yes</button>
+                                    <button id="" type="submit" class="btn btn-primary" > No</button>
+                                    
                                 </div>
-
+                                    
                             </div>
                         </form>
                     </div>
@@ -128,6 +141,10 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+                            <!--END OF DELETE BUTTON MODAL-->                  
+                   <?php
+                        }
+                         ?>
 <!--
                    <tr>
                        <td>Sanjay Janyani</td>
@@ -259,6 +276,33 @@
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
  <script src="../../assets/js/bootstrap.min.js"></script>
+ <script src="scripts/toastr.min.js"></script>
+<!--
+ <script src="scripts/manage-issuer.js" type="text/javascript"></script>
+ <script src="scripts/datatable.js" type="text/javascript"></script>
+ <script src="scripts/datatables.min.js" type="text/javascript"></script>
+-->
+
+ <script> 
+$(document).ready(function() {
+   $(".open-delete-modal").click(function() {
+    
+     $("#deleteModal").modal("show");
+  }),
+
+    $(".open-delete-modal").click(function() {
+        $stud_id = $(this).attr('id');
+//        window.alert($stud_id);  
+
+     $("#stud_form_delete_id").val($stud_id);
+       
+  });
+    
+    
+    
+    
+});
+</script>
  <script>
     $.fn.pageMe = function(opts){
     var $this = this,
@@ -366,7 +410,69 @@ $(document).ready(function(){
     
   $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
     
-});</script>
+});
+     
+     
+     
+     
+     <?php
+if(isset($_SESSION['delete_user'])){
+    ?>
+toastr["error"]("You Have Successfully Deleted", "User Deleted");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['delete_user']);
+}
+    ?>
+
+     
+     <?php
+if(isset($_SESSION['add_user'])){
+    ?>
+toastr["success"]("You Have Successfully Added User", "User Added");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['add_user']);
+}
+    ?>
+
+</script>
     
 </body>
 </html>

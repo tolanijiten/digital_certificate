@@ -70,13 +70,23 @@
                         </div><!--End of category-heading-->
                     </div><!-- End of Form Title-->
                     <div class="form-content">
-                        <form action="add.php" method="POST">
+                        <form action="add.php" method="POST" onsubmit="return validate()">
+                        <div class="row">
+                            <div class="col-md-5 ">
+<!--                            <span style="color: red;">Invalid</span>-->
+                                </div>
+                                <div class="col-md-6 ">
+                            <h5><span style="color: red; display:none" id="incomplete">Form Incomplete!!</span></h5>
+                            
+
+                                </div>
+                            </div>
                         <div class="row">
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
                                 <label for="">Name</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="text" class="form-control" id="" placeholder="Name" name="issuer_name">
+                                <input type="text" class="form-control" id="issuer_name" placeholder="Name" name="issuer_name">
                             </div> 
                             </div>
                         </div>
@@ -85,7 +95,7 @@
                                <div class="form-group">
                                 <label for="">Email</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="email" class="form-control" id="" placeholder="Email" name="issuer_email">
+                                <input type="email" class="form-control" id="issuer_email" placeholder="Email" name="issuer_email">
                             </div> 
                             </div>
                         </div>
@@ -94,7 +104,7 @@
                                <div class="form-group">
                                 <label for="">Password</label>
                                 <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
-                                <input type="text" class="form-control" id="" placeholder="Password" name="issuer_password">
+                                <input type="text" class="form-control" id="issuer_password" placeholder="Password" name="issuer_password">
                             </div>
                             </div>
                         </div>
@@ -121,5 +131,26 @@
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
  <script src="../../assets/js/bootstrap.min.js"></script>    
+ <script>
+        function validate(){
+        
+        var issuer_name=document.getElementById("issuer_name").value;
+        var issuer_email=document.getElementById("issuer_email").value;
+        var issuer_password=document.getElementById("issuer_password").value;
+        
+        if(issuer_name == "" || issuer_email=="" || issuer_password=="" ){
+        var x = document.getElementById("incomplete");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            return false;
+        }
+//        window.alert(prev_pass);
+
+    }
+     
+     
+
+    </script>
 </body>
 </html>
