@@ -1,5 +1,5 @@
 <?php
-$connection=mysqli_connect("localhost","Sanjay","Sanjay#123","ecertificate");
+$connection=mysqli_connect("localhost","latika","Latika@1234","ecertificate");
 if(!$connection)
 {
     echo "error in connection";
