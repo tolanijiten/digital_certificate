@@ -78,17 +78,17 @@ $user_id = $_SESSION['user_id'];
                     $result2 = mysqli_query($connection , $query2);
                     $row2 = mysqli_num_rows($result2);
                 ?>
-                <div class="col-md-4 col-sm-4 hist_card">
+                <div class="col-md-4 hist_card">
                     <div class="card border-info mb-3 bg-light" style="max-width: 18rem;">
                         <img class="card-img-top" src="../../assets/images/certificate_templates/<?php echo $template_id;?>.JPG" alt="Card image cap">
                         <div class="card-body text-center">
                             <h5 class="card-title"><?php echo $commitee_name;?></h5>
                             <p class="card-text">No of Certificates : <?php echo $row2;?></p>
                             <div class="row">
-                                <div class="col-md-6  col-sm-12 text-right">
+                                <div class="col-md-6 text-right">
                                     <a href="view_detail_history.php?generation_id=<?php echo $generation_id;?>" class="btn btn-primary"><i class="fa fa-eye"> View</i></a>
                                 </div>
-                                <div class="col-md-6  col-sm-12">
+                                <div class="col-md-6 ">
                                     <a href="#" class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='<?php echo $generation_id;?>' data-vendor=<?php echo $generation_id;?>><i class="fa fa-trash-alt"> Delete</i></a>
                                 </div>
                             </div>

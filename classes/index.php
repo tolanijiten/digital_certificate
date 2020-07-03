@@ -111,22 +111,22 @@
 	<nav class="navbar fixed-top navbar-light bg-light" style="font-size:16px;">
 		<ul class="nav justify-content-left">
 			<li class="nav-item">
-				<a class="nav-link active bit_nav bit_nav1" href="#" style="color:#337ab7 ">Home</a>
+				<a class="nav-link active bit_nav bit_nav1" href="#" style="color:#204a84 ">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#workflow" style="color:#337ab7 ">How it Works</a>
+				<a class="nav-link active bit_nav" href="#workflow" style="color:#204a84 ">How it Works</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#features" style="color:#337ab7 ">Features</a>
+				<a class="nav-link active bit_nav" href="#features" style="color:#204a84 ">Features</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#clients" style="color:#337ab7 ">Organizations</a>
+				<a class="nav-link active bit_nav" href="#clients" style="color:#204a84 ">Organizations</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active bit_nav" href="#contact" style="color:#337ab7 ">Contact</a>
+				<a class="nav-link active bit_nav" href="#contact" style="color:#204a84 ">Contact</a>
 			</li>
 			<li class="nav-item ">
-				<a class="logout btn bit_button" href="../classes/login/login.php" style="color:#fff;background-color:#337ab7; margin-top:5px;">Login</a>
+				<a class="logout btn bit_button" href="../classes/login/login.php" style="color:#fff;background-color:#204a84; margin-top:5px;">Login</a>
 			</li>
 
 
@@ -184,7 +184,7 @@
 			<div class="col-md-5 type">
 				<h2 style="color:#fff;padding-bottom:10px;letter-spacing:3px;"><i>Digital Certificate Generation!</i></h2>
 				<p style="text-align:justify;color:#fff;font-size:18px;">As it has been observed that the forgery of the the certificates has been increasing gradually.Also, a lot of paper is been wasted for generating hard copies of certificates. This issue can be solved by creating digital certificates i.e. e-certificates. The digital certificates can be generated with a QR-code on certificate using the blockchain technology. Currently, there are multiple numbers of ways through which one can verify the existence of a certificates an individual has on theblockchain. The easiest of them isto upload/scan the certificates to verify its existence. Upon uploading of the certificates,the proof of its existence gets verified, as the cryptographic digest and the marker for the transaction are also verified.</p>
-				<a href="login/login.php"><button class="btn generate" style="width:180px;height:60px;border:2px solid #fff;color:#fff;background-color:#337ab7;margin-left:200px;margin-top:30px;padding:15px;font-size:20px">Generate Now !</button></a>
+				<a href="login/login.php"><button class="btn generate" style="width:180px;height:60px;border:2px solid #fff;color:#fff;background-color:#204a84;margin-left:200px;margin-top:30px;padding:15px;font-size:20px">Generate Now !</button></a>
 
 			</div>
 
@@ -201,8 +201,8 @@
 
 		<div class="wow animated fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
 
-			<h2 style="color:rgb(33, 37, 41);letter-spacing:3px;text-align:center;"> How Does It Work</h2>
-			<div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
+			<h2 style="color:#204a84;letter-spacing:3px;text-align:center;"> How Does It Work</h2>
+			<div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
 		</div>
 		<div class="workflow-img">
 			<img src="../assets/images/work-progress.png" alt="">
@@ -280,8 +280,8 @@
 	
 	<!-- ***** Services Area Start ***** -->
 	<div class="wow animated fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" id="features">
-		<h2 style="color:rgb(33, 37, 41);letter-spacing:3px;text-align:center;">Features</h2>
-		<div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
+		<h2 style="color:#204a84;letter-spacing:3px;text-align:center;">Features</h2>
+		<div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
 	</div>
 
 	<section class="mosh--services-area section_padding_100">
@@ -293,7 +293,7 @@
 				<div class="col-12 col-sm-6 col-md-4">
 					<div class="single-feature-area d-flex mb-100">
 						<div class="feature-icon mr-30">
-							<img src="../assets/images/ic1.png" alt="">
+							<img src="../assets/images/icon1.png" alt="">
 						</div>
 						<div class="feature-content">
 							<h4>Efficient</h4>
@@ -305,7 +305,7 @@
 				<div class="col-12 col-sm-6 col-md-4">
 					<div class="single-feature-area d-flex mb-100">
 						<div class="feature-icon mr-30">
-							<img src="../assets/images/ic2.png" alt="">
+							<img src="../assets/images/icon2.png" alt="">
 						</div>
 						<div class="feature-content">
 							<h4> Tamper proof </h4>
@@ -317,7 +317,7 @@
 				<div class="col-12 col-sm-6 col-md-4">
 					<div class="single-feature-area d-flex mb-100">
 						<div class="feature-icon mr-30">
-							<img src="../assets/images/ic3.png" alt="">
+							<img src="../assets/images/icon3.png" alt="">
 						</div>
 						<div class="feature-content">
 							<h4>Highly Secure</h4>
@@ -329,7 +329,7 @@
 				<div class="col-12 col-sm-6 col-md-4">
 					<div class="single-feature-area d-flex mb-100">
 						<div class="feature-icon mr-30">
-							<img src="../assets/images/ic4.png" alt="">
+							<img src="../assets/images/icon4.png" alt="">
 						</div>
 						<div class="feature-content">
 							<h4>Transparent</h4>
@@ -341,7 +341,7 @@
 				<div class="col-12 col-sm-6 col-md-4">
 					<div class="single-feature-area d-flex mb-100">
 						<div class="feature-icon mr-30">
-							<img src="../assets/images/ic5.png" alt="">
+							<img src="../assets/images/icon5.png" alt="">
 						</div>
 						<div class="feature-content">
 							<h4>No Intermediaries</h4>
@@ -353,7 +353,7 @@
 				<div class="col-12 col-sm-6 col-md-4">
 					<div class="single-feature-area d-flex mb-100">
 						<div class="feature-icon mr-30">
-							<img src="../assets/images/ic1.png" alt="">
+							<img src="../assets/images/icon1.png" alt="">
 						</div>
 						<div class="feature-content">
 							<h4>Trustworthy</h4>
@@ -376,8 +376,8 @@
 			<div class="row">
 				<div class="col-12 wow animated fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
 
-					<h2 style="color:#337ab7;letter-spacing:3px;text-align:center;">Organizations</h2>
-					<div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
+					<h2 style="color:#204a84;letter-spacing:3px;text-align:center;">Organizations</h2>
+					<div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
 
 				</div>
 				<div class="col-12">
