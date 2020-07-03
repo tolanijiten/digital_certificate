@@ -6,6 +6,7 @@
    <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="../admin/scripts/toastr.min.css">
 	
 	<link rel="stylesheet" href="../../assets/vendor/animate/animate.css">
 
@@ -479,7 +480,42 @@
 
 	<script type="text/javascript" src="../../assets/vendor/engine2/wowslider.js"></script>
 	<script type="text/javascript" src="../../assets/vendor/engine2/script.js"></script>
+	<script src="../admin/scripts/toastr.min.js"></script>
+
 	<!-- End WOWSlider.com BODY section -->
+<script>
+<?php
+if(isset($_SESSION['change_pwd'])){
+    ?>
+toastr["success"]("You Have Successfully Changed Your Password", "Password Change");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['change_pwd']);
+}
+    ?>
+    
+    </script>
+
+     
+
 
 </body>
 

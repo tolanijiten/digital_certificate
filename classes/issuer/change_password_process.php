@@ -23,6 +23,7 @@ if(isset($_POST['submit_generation'])){
             if(!$result){
                 die("Query failed". mysqli_error($connection));
             }else{
+                $_SESSION['change_pwd']=1;
                  header("Location: ../issuer/select_template.php");
             }
             

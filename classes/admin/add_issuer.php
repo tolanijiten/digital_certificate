@@ -38,10 +38,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus"></i></a>
+        <a class="nav-link bit_nav" href="#">Add  <i class="fa fa-user-plus"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-eye"></i></a>
+        <a class="nav-link bit_nav" href="#">View  <i class="fa fa-eye"></i></a>
       </li>
       <li class="nav-item">
         <a class="logout btn bit_button" href="../classes/login/login.php" >Logout</a>

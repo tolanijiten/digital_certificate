@@ -35,13 +35,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus">Add Issuer</i></a>
+        <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus"> Add </i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-eye">View</i></a>
+        <a class="nav-link bit_nav" href="#"><i class="fa fa-eye">  View </i></a>
       </li>
       <li class="nav-item">
-        <a class="logout btn bit_button" href="../classes/login/login.php" >Logout</a>
+        <a class="logout btn bit_button" href="logout.php" >Logout</a>
       </li>
     </ul>
   </div>
@@ -124,7 +124,7 @@
                                 <div class="modal-footer">
                                    
                                     <button href="delete.php?user_id=stud_form_delete_id"  id="" type="submit" class="btn btn-danger" name="deleteBtn"><i class="fa fa-trash"></i> Yes</button>
-                                    <button id="" type="submit" class="btn btn-primary" > No</button>
+<!--                                    <button id="" type="submit" class="btn btn-primary" data-dismiss="modal"> No</button>-->
                                     
                                 </div>
                                     
@@ -469,6 +469,35 @@ toastr.options = {
         //toastr["Success"]("You just successfull edited record","Category Edit");
     <?php
     unset($_SESSION['add_user']);
+}
+    ?>
+
+     
+          <?php
+if(isset($_SESSION['user_id'])){
+    ?>
+toastr["success"]("You Have Successfully Logged In", "Admin");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['user_id']);
 }
     ?>
 

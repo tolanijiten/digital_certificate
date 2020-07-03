@@ -74,6 +74,7 @@ $user_id = $_SESSION['user_id'];
                     $template_id=$row['template_id'];
                     $generation_id = $row['generation_id'];
                     $query2 = "select * from $commitee_name";
+//                    echo $query2;
                     $result2 = mysqli_query($connection , $query2);
                     $row2 = mysqli_num_rows($result2);
                 ?>
