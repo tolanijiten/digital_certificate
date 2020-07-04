@@ -20,8 +20,8 @@ if(isset($_POST['verify']))
   
     $encryption_key = "DigiCertificate"; 
   
-    $committee_id_hash= openssl_encrypt($generation_id,"AES-128-ECB", 'digicert');
-    echo $committee_id_hash;
+    $committee_id_hash = openssl_encrypt($generation_id, $ciphering, $encryption_key, $options, $encryption_iv); 
+//    echo $committee_id_hash;
     
 //$generation_id=1;
     echo "<br>".$generation_id;

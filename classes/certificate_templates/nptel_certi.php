@@ -5,6 +5,7 @@ session_start();
 
 $committee_id=$_GET['committe_id'];
 $student_id=$_GET['student_id'];
+echo $committee_id;
 
 /*-----------------------Decrypting--------------------*/
 $encryption_key = "DigiCertificate"; 
@@ -12,11 +13,10 @@ $ciphering = "BF-CBC";
 $iv_length = openssl_cipher_iv_length($ciphering); 
 $options = 0;   
 $encryption_iv = '12345678';   
-$committe_id_dehash = openssl_decrypt($committee_id, $ciphering, 
-$encryption_key, $options, $encryption_iv);
-
-$student_id_dehash= openssl_decrypt($student_id, $ciphering, 
-$encryption_key, $options, $encryption_iv);
+$committe_id_dehash = openssl_decrypt($committee_id, $ciphering, $encryption_key, $options, $encryption_iv);
+echo $committe_id_dehash;
+echo "here";
+$student_id_dehash= openssl_decrypt($student_id, $ciphering, $encryption_key, $options, $encryption_iv);
 //echo $committe_id_dehash;
 //echo $student_id_dehash;
 //echo $generation_id;
@@ -31,9 +31,11 @@ $certificate_title=$row['certificate_title'];
 $authority_1_name=$row['authority_1_name'];
 $authority_2_name=$row['authority_1_name'];
 $date=$row['date'];
+echo $date;
 $authority_1_signature=$row['authority_1_signature'];
 $authority_2_signature=$row['authority_2_signature'];
 $committee_name=$row['commitee_name'];
+echo $committee_name;
 $logo=$row['logo'];
 
 /*-----------------------Setting Default Parameters---------------*/
@@ -43,6 +45,8 @@ $logo=$row['logo'];
 
 
 $query="select * from $committee_name where student_id=$student_id_dehash";
+echo $query;
+//exit;
 $result=mysqli_query($connection,$query);
 $row=mysqli_fetch_assoc($result);
 $student_name=$row['student_name'];

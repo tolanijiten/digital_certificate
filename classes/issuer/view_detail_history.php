@@ -44,7 +44,8 @@ function display_students(){
         echo"<td>{$email}</td>";
         echo"<td>{$link}</td>";
 
-        echo"<td><a href='#' class='btn btn-info'><i class='fa fa-edit'></i></a></td>";
+        echo"<td><a href='#' class='btn btn-info open-edit-modal' data-toggle='modal' data-target='#editModal' id='$student_id' data-vendor=$student_id ><i class='fa fa-edit'></i></a></td>";
+        
         echo"<td><a href='#' class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='$student_id' data-vendor=$student_id><i class='fa fa-trash'></i></a></td>";
         echo"</tr>";
     }
@@ -195,6 +196,63 @@ function display_students(){
         <!-- /.modal-dialog -->
     </div>
 
+   
+   
+   
+   
+   
+   
+<!--   Edit Modal-->
+   
+       <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h4 class="modal-title">Edit</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <form action="delete_record.php" method="POST" enctype="" style="width:100%">
+                            <div class="form-body">
+                                <div class="form-group clearfix">
+
+                                    <div class="col-md-12">
+                                        <p style="font-size:20px;">Do you really want to delete the record?</p>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <input type="hidden" name="student_id" id="stud_form_delete_id"> 
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="hidden" name="generation_id" id="generation_id" value="<?php echo $generation_id;?>"> 
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button id="" type="submit" class="btn btn-danger" name="delete_record"><i class="fa fa-trash"></i> Delete</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+   
+   
+<!-----------------End of edit modal   -->
+   
     <script src="../../assets/js/jquery.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/vendor/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
@@ -218,6 +276,29 @@ $(document).ready(function() {
     
 });
 </script>
+   
+   <script> 
+$(document).ready(function() {
+   $(".open-edit-modal").click(function() {
+    
+     $("#edit").modal("show");
+  }),
+
+    $(".open-edit-modal").click(function() {
+        $stud_id = $(this).attr('id');
+        //window.alert($stud_id);  
+
+     $("#stud_form_delete_id").val($stud_id);
+       
+  });
+    
+    
+    
+    
+});
+</script>
+   
+   
     <script>
     $.fn.pageMe = function(opts){
     var $this = this,
