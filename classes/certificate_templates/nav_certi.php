@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
             <li class="nav-item">
-                <a class="nav-link bit_nav" href="../index.php">Home</a>
+                <a class="nav-link bit_nav" href="../../index.php">Home</a>
             </li>
             <li>
                 <a id="btn-Convert-Html2Image" class="nav-link bit_nav" href="#">Download </a>

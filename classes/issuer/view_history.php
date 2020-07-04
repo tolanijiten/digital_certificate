@@ -69,7 +69,7 @@ $user_id = $_SESSION['user_id'];
             <div class="row">
                 <?php
                 //echo $user_id;
-                $query="Select * from generation where issued_by = 1";
+                $query="Select * from generation where issued_by = $user_id";
                 $result = mysqli_query($connection , $query);
                 while($row = mysqli_fetch_assoc($result)){
                     $commitee_name = $row['commitee_name'];

@@ -13,6 +13,7 @@ if(isset($_POST["submit_generation"])){
     $signature_2_name = $_POST["signature_2_name"];
     $template_id=$_POST['template_id'];
     
+    
     $query = "INSERT INTO generation(template_id, commitee_name, certificate_title, authority_1_name, authority_2_name, date,issued_by) VALUES('$template_id','$commitee_name', '$certificate_title', '$signature_1_name', '$signature_2_name','$date',$user_id)";
 //    echo $query;
     $result = mysqli_query($connection, $query);
@@ -130,7 +131,8 @@ if(isset($_POST["submit_generation"])){
     if (mysqli_query($connection, $sql)) {
 //    echo "Table created successfully";
 } else {
-    echo "Error creating table: " . mysqli_error($connection);
+    die("Error creating table: " . mysqli_error($connection));
+    
 }
 
 

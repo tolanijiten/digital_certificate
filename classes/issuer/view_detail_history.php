@@ -2,8 +2,13 @@
  require_once("../../functions/db.php");
 session_start();
 $generation_id=$_GET['generation_id'];
-//echo $_SESSION['user_id'];
+$user_id=$_SESSION['user_id'];
 //exit;
+$generation_id = $_GET['generation_id'];
+     $query="Select * from generation where generation_id = $generation_id and issued_by=$user_id";
+     $result = mysqli_query($connection , $query);
+     $row = mysqli_fetch_array($result);
+     $commitee_name = $row['commitee_name'];
 if(isset($_SESSION['user_id'])){
 
 function display_students(){
@@ -107,7 +112,7 @@ function display_students(){
     <section style="margin:50px;">
         <div class="container">
             <div class="category-heading text-center">
-                <h3 class="text-heading" style="font-size: 30px;">Student List</h3>
+                <h3 class="text-heading" style="font-size: 30px;"><?php echo $commitee_name ?> </h3>
                 <div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
             </div>
     <div class="container-fluid" style="margin-top:59px;">

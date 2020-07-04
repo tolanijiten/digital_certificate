@@ -27,8 +27,8 @@ if(isset($_POST['delete_certi'])){
     $result = mysqli_query($connection, $query);
     if($result){
         $query1 ="Delete from generation where generation_id = $generation_id";
-        //echo $query1;
        $result1 = mysqli_query($connection, $query1);
+        echo "here";
         if($result1){
             header("Location: view_history.php");
         } 
