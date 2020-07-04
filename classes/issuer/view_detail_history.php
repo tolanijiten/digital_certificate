@@ -77,6 +77,7 @@ function display_students(){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../admin/scripts/toastr.min.css">
     <style>
         body{
 	font-family: "Nunito Sans", sans-serif;
@@ -341,6 +342,7 @@ function display_students(){
     <script src="../../assets/js/jquery.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/vendor/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+    <script src="../admin/scripts/toastr.min.js"></script>
     <script> 
 $(document).ready(function() {
    $(".open-delete-modal").click(function() {
@@ -509,7 +511,97 @@ $(document).ready(function(){
     
   $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
     
-});</script>
+});
+    
+    
+              <?php
+if(isset($_SESSION['update'])){
+    ?>
+toastr["success"]("Update Successful", "Changes Made");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['update']);
+}
+    ?>
+
+    
+                  <?php
+if(isset($_SESSION['generate'])){
+    ?>
+toastr["success"]("Certificates Generated", "Successful");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['generate']);
+}
+    ?>
+
+    <?php
+if(isset($_SESSION['delete_record'])){
+    ?>
+toastr["error"]("Record Deleted", "Success");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['generate']);
+}
+    ?>
+    
+    
+    
+    </script>
 </body>
 
 </html>

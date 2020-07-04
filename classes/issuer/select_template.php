@@ -25,6 +25,7 @@ if(isset($_SESSION['user_id'])){
     <script src="../../assets/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../admin/scripts/toastr.min.css">
 
     <!-- End WOWSlider.com HEAD section -->
     <style>
@@ -363,6 +364,36 @@ if(isset($_SESSION['user_id'])){
 
     <script type="text/javascript" src="../../assets/vendor/engine2/wowslider.js"></script>
     <script type="text/javascript" src="../../assets/vendor/engine2/script.js"></script>
+    <script src="../admin/scripts/toastr.min.js"></script>
+    <script>
+                <?php
+if(isset($_SESSION['change_pwd'])){
+    ?>
+toastr["success"]("Password Changed Successfully", "Issuer");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['change_pwd']);
+}
+    ?>
+    </script>
     <!-- End WOWSlider.com BODY section -->
 
 </body>

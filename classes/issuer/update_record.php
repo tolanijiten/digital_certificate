@@ -1,5 +1,6 @@
 <?php
 require_once("../../functions/db.php");
+session_start();
 if(isset($_POST['update_record'])){
     $generation_id = $_POST['generation_id'];
     $student_id = $_POST['student_id'];
@@ -34,6 +35,7 @@ if(isset($_POST['update_record'])){
     $result = mysqli_query($connection, $query);
     if($result){
         echo "Updates SUCCESSFULLY!!";
+        $_SESSION['update']=1;
         header("Location: view_detail_history.php?generation_id=$generation_id");
     }
 }   

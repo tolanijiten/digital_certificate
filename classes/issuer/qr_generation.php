@@ -243,6 +243,7 @@ $num=mysqli_num_rows($result_set);
     $_SESSION['end']=5;
     $_SESSION['students']=$num;
     $_SESSION['generation_id']=$generation_id;
+    $_SESSION['generate']=1;
     header("Location: view_detail_history.php?generation_id=$generation_id");
     
 //    header("Location: requests.php?a=1");

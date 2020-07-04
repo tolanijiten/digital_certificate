@@ -1,7 +1,7 @@
 <?php
 
 
-$connection=mysqli_connect("localhost","Sanjay","Sanjay#123","ecertificate");
+$connection=mysqli_connect("localhost","JITEN","qwertyuiop","ecertificate");
 
 if(!$connection)
 {

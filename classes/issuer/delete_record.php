@@ -1,5 +1,6 @@
 <?php
 require_once("../../functions/db.php");
+session_start();
 if(isset($_POST['delete_record'])){
     $generation_id = $_POST['generation_id'];
     $student_id = $_POST['student_id'];
@@ -10,6 +11,7 @@ if(isset($_POST['delete_record'])){
     $query = "delete from $commitee_name WHERE student_id =  $student_id";
     $result = mysqli_query($connection, $query);
     if($result){
+        $_SESSION['delete_record']=1;
         echo "DELETED SUCCESSFULLY!!";
         header("Location: view_detail_history.php?generation_id=$generation_id");
     }

@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html>
 <head>
    <title>Add Issuer</title>
@@ -7,6 +10,7 @@
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
    <link rel="stylesheet" href="../../assets/css/style.css">
+   <link rel="stylesheet" href="scripts/toastr.min.css">
     <style>
    
         body{
@@ -130,7 +134,8 @@
 </footer>
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
- <script src="../../assets/js/bootstrap.min.js"></script>    
+ <script src="../../assets/js/bootstrap.min.js"></script>
+ <script src="scripts/toastr.min.js"></script>    
  <script>
         function validate(){
         
@@ -148,7 +153,34 @@
 //        window.alert(prev_pass);
 
     }
+     <?php
      
+if(isset($_SESSION['failure'])){
+    ?>
+toastr["error"]("Sorry Email Already Exists", "Enter New Email");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['failure']);
+}
+    ?>
      
 
     </script>

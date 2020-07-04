@@ -123,7 +123,7 @@
                                 
                                 <div class="modal-footer">
                                    
-                                    <button href="delete.php?user_id=stud_form_delete_id"  id="" type="submit" class="btn btn-danger" name="deleteBtn"><i class="fa fa-trash"></i> Yes</button>
+                                    <button id="" type="submit" class="btn btn-danger" name="deleteBtn"><i class="fa fa-trash"></i> Yes</button>
 <!--                                    <button id="" type="submit" class="btn btn-primary" data-dismiss="modal"> No</button>-->
                                     
                                 </div>

@@ -56,6 +56,7 @@ function display_students(){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../admin/scripts/toastr.min.css">
     <style>
         body{
 	font-family: "Nunito Sans", sans-serif;
@@ -171,7 +172,7 @@ function display_students(){
                                 </div>
                                 
                                 <div class="modal-footer">
-                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #337ab7; color: white;" >Genertate Cerificates <i class="fa fa-check"></i></button>
+                                    <button id="" type="submit" class="btn btn-default" name="verify" style="background-color: #337ab7; color: white;" >Generate Cerificates <i class="fa fa-check"></i></button>
                                 </div>
 
                             </div>
@@ -191,6 +192,7 @@ function display_students(){
     <script src="../../assets/js/jquery.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/vendor/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+    <script src="../admin/scripts/toastr.min.js"></script>
     <script>
     $.fn.pageMe = function(opts){
     var $this = this,
