@@ -5,7 +5,6 @@ session_start();
 
 $committee_id=$_GET['committe_id'];
 $student_id=$_GET['student_id'];
-echo $committee_id;
 
 /*-----------------------Decrypting--------------------*/
 $encryption_key = "DigiCertificate"; 
@@ -14,8 +13,6 @@ $iv_length = openssl_cipher_iv_length($ciphering);
 $options = 0;   
 $encryption_iv = '12345678';   
 $committe_id_dehash = openssl_decrypt($committee_id, $ciphering, $encryption_key, $options, $encryption_iv);
-echo $committe_id_dehash;
-echo "here";
 $student_id_dehash= openssl_decrypt($student_id, $ciphering, $encryption_key, $options, $encryption_iv);
 //echo $committe_id_dehash;
 //echo $student_id_dehash;
@@ -45,8 +42,6 @@ $logo=$row['logo'];
 
 
 $query="select * from $committee_name where student_id=$student_id_dehash";
-echo $query;
-//exit;
 $result=mysqli_query($connection,$query);
 $row=mysqli_fetch_assoc($result);
 $student_name=$row['student_name'];

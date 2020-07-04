@@ -28,6 +28,8 @@ function display_students(){
     while($row2 = mysqli_fetch_assoc($result2)){
         $student_id = $row2['student_id'];
         $student_name = $row2['student_name'];
+        $year=$row2['year'];
+        $department=$row2['department'];
         $class = $row2['class'];
         $rank = $row2['rank'];
         $field= $row2['field'];
@@ -36,7 +38,10 @@ function display_students(){
         $email= $row2['email'];
 
         echo"<tr>";
+        echo"<td>{$student_id}</td>";
         echo"<td>{$student_name}</td>";
+        echo"<td>{$year}</td>";
+        echo"<td>{$department}</td>";
         echo"<td>{$class}</td>";
         echo"<td>{$rank}</td>";
         echo"<td>{$field}</td>";
@@ -44,7 +49,7 @@ function display_students(){
         echo"<td>{$email}</td>";
         echo"<td>{$link}</td>";
 
-        echo"<td><a href='#' class='btn btn-info open-edit-modal' data-toggle='modal' data-target='#editModal' id='$student_id' data-vendor=$student_id ><i class='fa fa-edit'></i></a></td>";
+        echo"<td><a href='#' class='btn btn-info open-edit-modal' data-toggle='modal' data-target='#editModal' id='$student_id' name='$student_name' year='$year' department='$department' class_std='$class' rank='$rank' field='$field' score='$score' email='$email' link='$link' data-vendor=$student_id ><i class='fa fa-edit'></i></a></td>";
         
         echo"<td><a href='#' class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='$student_id' data-vendor=$student_id><i class='fa fa-trash'></i></a></td>";
         echo"</tr>";
@@ -61,6 +66,8 @@ function display_students(){
 <html>
 
 <head>
+   <title>View Records</title>
+    <link rel="icon" href="../../assets/images/ves_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
@@ -97,7 +104,7 @@ function display_students(){
     <?php
     require_once("navbar.php");
     ?>
-    <section style="margin:100px;">
+    <section style="margin:50px;">
         <div class="container">
             <div class="category-heading text-center">
                 <h3 class="text-heading" style="font-size: 30px;">Student List</h3>
@@ -110,7 +117,10 @@ function display_students(){
                      <table class="table table-striped table-hover table-bordered">
                     <thead style="color:#337ab7;">
                         <tr>
+                           <th>Sr No.</th>
                             <th>Student Name</th>
+                            <th>Year</th>
+                            <th>Department</th>
                             <th>Class</th>
                             <th>Rank</th>
                             <th>Field</th>
@@ -166,11 +176,14 @@ function display_students(){
                                 <div class="form-group clearfix">
 
                                     <div class="col-md-12">
-                                        <p style="font-size:20px;">Do you really want to delete the record?</p>
+                                        <p style="font-size:15px;">Are you sure you want to delete the record?</p>
                                     </div>
-                                    
+                                <div class="form-group">
                                     <div class="col-md-12">
+                                       
+                                        <lable></lable>
                                         <input type="hidden" name="student_id" id="stud_form_delete_id"> 
+                                    </div>
                                     </div>
                                     <div class="col-md-12">
                                         <input type="hidden" name="generation_id" id="generation_id" value="<?php echo $generation_id;?>"> 
@@ -215,17 +228,84 @@ function display_students(){
                 <div class="modal-body">
 
                     <div class="row">
-                        <form action="delete_record.php" method="POST" enctype="" style="width:100%">
+                        <form action="update_record.php" method="POST" enctype="" style="width:100%">
                             <div class="form-body">
                                 <div class="form-group clearfix">
 
                                     <div class="col-md-12">
-                                        <p style="font-size:20px;">Do you really want to delete the record?</p>
+                                        <p style="font-size:20px;"></p>
                                     </div>
                                     
+                                    <div class="form-group">
                                     <div class="col-md-12">
-                                        <input type="hidden" name="student_id" id="stud_form_delete_id"> 
+                                       
+                                        <lable>Student ID</lable>
+                                        <input class="form-control" type="text" name="student_id" id="stud_form_edit_id" readonly> 
                                     </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Student Name</lable>
+                                        <input class="form-control" type="text" name="name" id="stud_form_name_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Year</lable>
+                                        <input class="form-control" type="text" name="year" id="stud_form_year_id"> 
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Department</lable>
+                                        <input class="form-control" type="text" name="dept" id="stud_form_department_id"> 
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Class</lable>
+                                        <input class="form-control" type="text" name="class" id="stud_form_class_id"> 
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Rank</lable>
+                                        <input class="form-control" type="text" name="rank" id="stud_form_rank_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Field</lable>
+                                        <input class="form-control" type="text" name="field" id="stud_form_field_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Score</lable>
+                                        <input class="form-control" type="text" name="score" id="stud_form_score_id"> 
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Email</lable>
+                                        <input class="form-control" type="text" name="email" id="stud_form_email_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    
                                     <div class="col-md-12">
                                         <input type="hidden" name="generation_id" id="generation_id" value="<?php echo $generation_id;?>"> 
                                     </div>
@@ -233,7 +313,7 @@ function display_students(){
                                 </div>
                                 
                                 <div class="modal-footer">
-                                    <button id="" type="submit" class="btn btn-danger" name="delete_record"><i class="fa fa-trash"></i> Delete</button>
+                                    <button id="" type="submit" class="btn btn-danger" name="update_record"><i class="fa fa-edit"></i> EDIT</button>
                                 </div>
 
                             </div>
@@ -286,9 +366,27 @@ $(document).ready(function() {
 
     $(".open-edit-modal").click(function() {
         $stud_id = $(this).attr('id');
-        //window.alert($stud_id);  
+        $name = $(this).attr('name');
+        $year=$(this).attr('year');
+        $department=$(this).attr('department');
+        $class = $(this).attr('class_std');
+        $rank = $(this).attr('rank');
+        $field= $(this).attr('field');
+        $score=$(this).attr('score');
+       $email=$(this).attr('email');
+       $link= $(this).attr('link');
+//        window.alert($email);  
 
-     $("#stud_form_delete_id").val($stud_id);
+     $("#stud_form_edit_id").val($stud_id);
+     $("#stud_form_name_id").val($name);
+     $("#stud_form_year_id").val($year);
+     $("#stud_form_department_id").val($department);
+     $("#stud_form_class_id").val($class);
+     $("#stud_form_rank_id").val($rank);
+     $("#stud_form_field_id").val($field);
+     $("#stud_form_score_id").val($score);
+     $("#stud_form_email_id").val($email);
+   
        
   });
     

@@ -25,8 +25,8 @@ $user_id = $_SESSION['user_id'];
 <html>
 
 <head>
-    <title></title>
-    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+<title>View Records</title>
+    <link rel="icon" href="../../assets/images/ves_logo.png" type="image/x-icon">    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
