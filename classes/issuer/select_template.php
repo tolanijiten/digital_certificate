@@ -9,7 +9,7 @@ if(isset($_SESSION['user_id'])){
 <html>
 
 <head>
-    <title>Generate Certificate</title>
+    <title>Select  Template</title>
     <link rel="icon" href="../../assets/images/ves_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
