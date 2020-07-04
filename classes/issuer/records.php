@@ -1,6 +1,10 @@
 <?php
  require_once("../../functions/db.php");
 $generation_id=$_GET['generation_id'];
+session_start();
+if(isset($_SESSION['user_id'])){
+
+
 //$generation_id=2;
 //echo $generation_id;
 function display_students(){
@@ -298,3 +302,10 @@ $(document).ready(function(){
 </body>
 
 </html>
+<?php
+}
+else{
+    header("Location: ../login/login.php");
+}
+
+?>

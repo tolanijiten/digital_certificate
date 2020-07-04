@@ -21,10 +21,10 @@ while($row2 = mysqli_fetch_assoc($result2)){
     $email=$row2['email'];
     $link=$row2['link'];
     $qr=$row2['qr_image'];
-    $html.="<tr><td>$student_id</td><td>$student_name</td><td>$class</td><td>$rank</td><td>$field</td><td>$email</td><td>$qr</td><td>$link</td></tr>";
+    $html.="<tr><td>$student_id</td><td>$student_name</td><td>$class</td><td>$rank</td><td>$field</td><td>$email</td><td>$link</td><td>$qr</td></tr>";
 }
 $html.="</table>";
 header('Content-Type:application/xls');
-header('Content-Disposition:attachment;filename=list.xls');
+header('Content-Disposition:attachment;filename=student_list.xls');
 echo $html;
 ?>

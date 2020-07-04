@@ -1,8 +1,11 @@
 <?php
  require_once("../../functions/db.php");
+session_start();
 $generation_id=$_GET['generation_id'];
-//$generation_id=2;
-//echo $generation_id;
+//echo $_SESSION['user_id'];
+//exit;
+if(isset($_SESSION['user_id'])){
+
 function display_students(){
     global $connection;
      $generation_id = $_GET['generation_id'];
@@ -29,6 +32,7 @@ function display_students(){
         $rank = $row2['rank'];
         $field= $row2['field'];
         $score = $row2['score'];
+        $link= $row2['link'];
         $email= $row2['email'];
 
         echo"<tr>";
@@ -38,6 +42,8 @@ function display_students(){
         echo"<td>{$field}</td>";
         echo"<td>{$score}</td>";
         echo"<td>{$email}</td>";
+        echo"<td>{$link}</td>";
+
         echo"<td><a href='#' class='btn btn-info'><i class='fa fa-edit'></i></a></td>";
         echo"<td><a href='#' class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='$student_id' data-vendor=$student_id><i class='fa fa-trash'></i></a></td>";
         echo"</tr>";
@@ -71,7 +77,7 @@ function display_students(){
         .generate{
             border:solid 1px #204a84; 
             background:#F8F9FA; 
-            color: #204a84; 
+            color: #337ab7; 
             font-size: 20px;  
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
             width: 75%; 
@@ -80,7 +86,7 @@ function display_students(){
             left: 25%;
         }
         .generate:hover{
-            background: #204a84;
+            background: #337ab7;
             color: #f8f9fa;
         }
 </style>
@@ -94,14 +100,14 @@ function display_students(){
         <div class="container">
             <div class="category-heading text-center">
                 <h3 class="text-heading" style="font-size: 30px;">Student List</h3>
-                <div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
+                <div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
             </div>
     <div class="container-fluid" style="margin-top:59px;">
                <div class="container">
                    <div class="row">
                     <div class="table-responsive text-nowrap">
                      <table class="table table-striped table-hover table-bordered">
-                    <thead style="color:#204a84;">
+                    <thead style="color:#337ab7;">
                         <tr>
                             <th>Student Name</th>
                             <th>Class</th>
@@ -109,6 +115,7 @@ function display_students(){
                             <th>Field</th>
                             <th>Score</th>
                             <th>Email</th>
+                            <th>Unique Url</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -130,6 +137,14 @@ function display_students(){
             </div><!--tablecontainer--> 
         <!--row-->
     </div>
+    <div class="row">
+                    <div class="col-md-5">
+                    </div>
+                    <div class="col-md-2">
+                        <a href="<?php echo 'export.php?generation_id='.$generation_id; ?>" class="btn btn-default" style="margin-bottom:50px; background-color: #337ab7; color: white;"> Export to EXCEL <i class="fa fa-check"></i></a>
+                    </div>
+                </div>
+                
     <!--container_fluid-->
         </div>
     </section>
@@ -314,3 +329,10 @@ $(document).ready(function(){
 </body>
 
 </html>
+<?php
+}
+else{
+    header("Location: ../login/login.php");
+}
+
+?>

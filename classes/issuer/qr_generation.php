@@ -20,7 +20,7 @@ if(isset($_POST['verify']))
   
     $encryption_key = "DigiCertificate"; 
   
-    $committee_id_hash= openssl_encrypt($generation_id, $ciphering, $encryption_key, $options, $encryption_iv);
+    $committee_id_hash= openssl_encrypt($generation_id,"AES-128-ECB", 'digicert');
     echo $committee_id_hash;
     
 //$generation_id=1;
@@ -243,7 +243,7 @@ $num=mysqli_num_rows($result_set);
     $_SESSION['end']=5;
     $_SESSION['students']=$num;
     $_SESSION['generation_id']=$generation_id;
-    header("Location: convert_to_excel.php?generation_id=$generation_id");
+    header("Location: view_detail_history.php?generation_id=$generation_id");
     
 //    header("Location: requests.php?a=1");
     

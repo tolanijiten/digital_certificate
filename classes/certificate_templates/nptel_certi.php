@@ -36,6 +36,10 @@ $authority_2_signature=$row['authority_2_signature'];
 $committee_name=$row['commitee_name'];
 $logo=$row['logo'];
 
+/*-----------------------Setting Default Parameters---------------*/
+//$authority_1_name=VESIT NPTEL Chapter, Department Incharge;
+//$authority_2_name=Principal/ Vice Principal;
+
 
 
 $query="select * from $committee_name where student_id=$student_id_dehash";

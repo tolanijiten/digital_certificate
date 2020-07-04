@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
         }
     }
     else{
-        echo "Invalid";
+            header("Location: login.php?q=1");
     }
 }
 ?>

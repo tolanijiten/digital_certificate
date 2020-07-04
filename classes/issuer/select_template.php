@@ -1,3 +1,10 @@
+<?php
+require_once('../../functions/db.php');
+session_start();
+//echo $_SESSION['user_id'];
+if(isset($_SESSION['user_id'])){
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -361,3 +368,10 @@
 </body>
 
 </html>
+<?php
+}
+else{
+    header("Location: ../login/login.php");
+}
+
+?>

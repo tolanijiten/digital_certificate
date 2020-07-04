@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once("../../functions/db.php");
+if(isset($_SESSION['user_id'])){
+
 $user_id = $_SESSION['user_id'];
 //     $query="Select * from generation where user_id = $user_id";
 //     $result = mysqli_query($connection , $query);
@@ -61,7 +63,7 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="category-heading text-center">
                 <h3 class="text-heading" style="font-size: 30px;">History</h3>
-                <div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
+                <div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
             </div>
             <!--End of category-heading-->
             <div class="row">
@@ -176,3 +178,10 @@ $(document).ready(function() {
 </body>
 
 </html>
+<?php
+}
+else{
+    header("Location: ../login/login.php");
+}
+
+?>

@@ -2,13 +2,10 @@
 include_once("../../functions/db.php");
 ob_start();
 session_start();
-//$organization_id = $_SESSION["organization_id"];// to be uncommented
-//$organization_id = 13; //to be commented afterwards when involving sessions
-$template_id=$_GET['template_id'];
-//echo $template_id;
-    
-    
+if(isset($_SESSION['user_id'])){
+    $template_id=$_GET['template_id'];
 ?>
+
 <html>
 
 <head>
@@ -60,7 +57,7 @@ $template_id=$_GET['template_id'];
                 <div class="col-md-5" style=" background: #fff; padding: 50px; border: solid 2px #337ab7; margin-top:60px;">
                     <div class="form-title">
                         <div class="category-heading text-center">
-                            <h3  class="text-heading" style="font-size: 30px;">Category</h3>
+                            <h3  class="text-heading" style="font-size: 30px;">Generate</h3>
                             <div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
                         </div>
                         
@@ -68,7 +65,15 @@ $template_id=$_GET['template_id'];
                     </div>
                     <!--End of form-title-->
                     <div class="form-content">
-                        <form action="insert_generation.php" method="POST" enctype="multipart/form-data">
+                        <form action="insert_generation.php" method="POST" enctype="multipart/form-data" onsubmit="return velidate()">
+                           <div class="row">
+                            <div class="col-md-4 ">
+<!--                            <span style="color: red;">Invalid</span>-->
+                            </div>
+                             <div class="col-md-6 ">
+                              <span style="color: red; display:none" id="incomplete">Form Incomplete!!</span>
+                            </div>
+                            </div>
                            <div class="form-group">
                                 <label for="">Organisation Name</label>
                                 <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
@@ -92,9 +97,13 @@ $template_id=$_GET['template_id'];
                             
                             
                             <div class="form-group">
-                                <label for="">Committee Name</label>  
-                                <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div><span style="color:red;">format(write the committee name,then a underscore and then year)Eg. ISTE_2020</span>
-                                <input type="text" class="form-control" id="" placeholder="Commitee Name" name="commitee_name">
+                                <label for="">Committee Name </label>
+                                <span style="color: red;">*</span>  
+                                <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
+                                <span style="color:#337ab7;">
+                                    format(write the committee name,then a underscore and then year)Eg. ISTE_2020
+                                </span>
+                                <input type="text" class="form-control" id="commitee_name_id" placeholder="Commitee Name" name="commitee_name">
                             </div>
 <!--
                             
@@ -107,8 +116,9 @@ $template_id=$_GET['template_id'];
                            
                             <div class="form-group">
                                 <label for="">Date</label>
+                                <span style="color:red;">*</span>  
                                 <div style="width: 30px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
-                                <input type="date" class="form-control" id="" name="date">
+                                <input type="date" class="form-control" id="date_id" name="date">
                             </div>
                             <div class="form-group">
                                 <label for="">First Authority Name</label>
@@ -117,12 +127,13 @@ $template_id=$_GET['template_id'];
                             </div>
                             <div class="form-group">
                                 <label for="">First Authority Signature </label>
-                                <span style="color: red;">Upload a Transperent png photo
+                                <span style="color:red;">*</span>
+                                <span style="color: #337ab7;">Upload a Transperent png photo
 <!--                                . Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a>-->
                                 
                                 </span>
                                 <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
-                                <input type="file" id="" name="signature_1_photo" class="">
+                                <input type="file" id="fir_auth_sig" name="signature_1_photo" class="">
                                    
                             </div>
                             <div class="form-group">
@@ -133,19 +144,26 @@ $template_id=$_GET['template_id'];
                             
                             <div class="form-group">
                                 <label for="">Second Authority Signature </label>
-                                <span style="color: red;">Upload a Transperent png photo
+                                <span style="color:red;">*</span>
+                                <span style="color: #337ab7;">Upload a Transperent png photo
 <!--                                . Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools</a>-->
                                 
                                 </span>
                                 <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
-                                <input type="file" id="" name="higher_authority_signature" class="">
+                                <input type="file" id="sec_auth_sig" name="higher_authority_signature" class="">
                                    
                             </div>
                             
                             <div class="form-group">
                                 <label for="">Upload Excel Sheet</label>
+                                <span style="color: red;">*
+<!--                                . Tool: <a href="https://onlinepngtools.com/create-transparent-png">onlinepngtools
+                                onchange="validate_fileupload(this.value);
+                               </a>-->
+                                
+                                </span>
                                 <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
-                                <input type="file" id="" name="excel_sheet" class="">
+                                <input type="file" id="sheet" name="excel_sheet" class="">
                             </div>
                             <div class="form-group">
 <!--                                <label for="">Upload Excel Sheet</label>-->
@@ -177,9 +195,65 @@ $template_id=$_GET['template_id'];
     <script src="../../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script>
+    function velidate(){
         
+        var commitee_name_id=document.getElementById("commitee_name_id").value;
+        var sheet=document.getElementById("sheet").value;
+        var date_id=document.getElementById("date_id").value;
+        var fir_auth_sig=document.getElementById("fir_auth_sig").value;
+        var sec_auth_sig=document.getElementById("sec_auth_sig").value;
+        
+//        window.alert(sec_auth_sig);
+        //        var new_pass=document.getElementById("new_password").value;
+//        var cnf_pass=document.getElementById("confirm_password").value;
+//        || new_pass=="" || cnf_pass=="" 
+        if(commitee_name_id == "" || date_id == "" || sheet=="" || fir_auth_sig=="" || sec_auth_sig==""){
+            window.alert("Form Incomplete");
+        var x = document.getElementById("incomplete");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            return false;
+        }
+        
+//        else if(new_pass != cnf_pass){
+////            window.alert("cnf");
+//            var y = document.getElementById("pswrd");
+//            if (y.style.display === "none") {
+//                y.style.display = "block";
+//                return false;
+//            }
+//        }
+//        window.alert(prev_pass);
+
+    }
+    </script>
+    
+    
+    <script>
+    function validate_fileupload(fileName)
+{
+    var allowed_extensions = new Array("jpg","png","gif");
+    var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+    for(var i = 0; i <= allowed_extensions.length; i++)
+    {
+        if(allowed_extensions[i]==file_extension)
+        {
+            return true; // valid file extension
+        }
+    }
+    window.alert("sheet");
+    return false;
+}
     </script>
     
 </body>
 
 </html>
+<?php
+}
+else{
+    header("Location: ../login/login.php");
+}
+?>
