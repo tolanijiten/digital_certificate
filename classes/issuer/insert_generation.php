@@ -1,9 +1,8 @@
 <?php
 include_once("../../functions/db.php");
-session_start();
-$user_id=$_SESSION['user_id'];
-//$user_id=1;
 
+//$user_id=1;
+global $connection;
 if(isset($_POST["submit_generation"])){
     $name = $_POST["name"];
     $commitee_name = $_POST["commitee_name"];
@@ -13,7 +12,18 @@ if(isset($_POST["submit_generation"])){
     $signature_2_name = $_POST["signature_2_name"];
     $template_id=$_POST['template_id'];
     
-    
+    $cquery="Select * from generation where commitee_name='$commitee_name'";
+    echo $cquery;
+    $result=mysqli_query($connection,$cquery);
+    if(mysqli_num_rows($result)>=1)
+    {
+//        die("Query Failed : ". mysqli_error($connection));
+        $_SESSION['already_exists']=1;
+        header("Location: generation_form.php?template_id=$template_id&q=1");
+        exit;
+    }
+    session_start();
+$user_id=$_SESSION['user_id'];
     $query = "INSERT INTO generation(template_id, commitee_name, certificate_title, authority_1_name, authority_2_name, date,issued_by) VALUES('$template_id','$commitee_name', '$certificate_title', '$signature_1_name', '$signature_2_name','$date',$user_id)";
 //    echo $query;
     $result = mysqli_query($connection, $query);

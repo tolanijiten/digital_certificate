@@ -35,13 +35,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-user-plus"> Add </i></a>
+        <a class="nav-link bit_nav" href="add_issuer.php"><i class="fa fa-user-plus"> Add </i></a>
       </li>
       <li class="nav-item">
         <a class="nav-link bit_nav" href="#"><i class="fa fa-eye">  View </i></a>
       </li>
       <li class="nav-item">
-        <a class="logout btn bit_button" href="logout.php" >Logout</a>
+        <a class="logout btn bit_button" href="../login/logout.php" >Logout</a>
       </li>
     </ul>
   </div>

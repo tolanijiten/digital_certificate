@@ -68,7 +68,7 @@ $qr_code=$row['qr_image'];
 <html>
 
 <head>
-    <title>E certi</title>
+    <title>VES Ecertificate</title>
     <link rel="icon" href="../../assets/images/ves_logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/styles.css">

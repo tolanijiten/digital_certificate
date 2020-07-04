@@ -68,76 +68,7 @@ if(isset($_SESSION['user_id'])){
 			font-size: 20px;
 		}
 
-		footer {
-			background-color: #313e50;
-			padding-top: 30px;
-			border-top: 5px solid rgba(0, 0, 0, 0.1);
-		}
-
-		footer p {
-			font-size: 16px;
-			font-weight: 300;
-		}
-
-		.contact-left h3,
-		.contact-right h3 {
-			color: #fff;
-			font-size: 28px;
-			font-weight: 700;
-		}
-
-
-
-		.contact-left p {
-			color: #fff;
-			margin-bottom: 30px;
-		}
-
-
-		.contact-info {
-			background: url("../../assets/images/world-map.png") no-repeat;
-			background-size: contain;
-		}
-
-		address {
-			color: #fff;
-		}
-
-		address strong,
-		phone-fax-email strong {
-			font-size: 16px;
-			letter-spacing: 1px;
-		}
-
-		.form-control {
-			background-color: transparent;
-			border-radius: 0;
-			color: #fff;
-			font-size: 16px;
-			font-weight: 300;
-			border-color: #fff;
-			margin-bottom: 20px;
-			padding: 8px 15px;
-		}
-
-		.btn-general {
-			border: solid 2px #fff;
-			border-radius: 0;
-			padding: 12px 26px;
-			text-transform: uppercase;
-			/*    font-weight: bold;*/
-		}
-
-		.btn-white {
-			color: #fff;
-			border-color: #fff;
-		}
-
-		.btn-white:hover,
-		.btn-white:focus {
-			background: #fff;
-			color: #313e50;
-		}
+		
 
 		/*Image Hovering*/
 
@@ -313,54 +244,9 @@ if(isset($_SESSION['user_id'])){
     </div>
     <!--container fluid end-->
     <!--Footer-->
-    <footer id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="contact-left">
-                        <h3>DigiCerts</h3>
-                        <p>A place to </p>
-                        <div class="contact-info">
-                            <address>
-                                <strong>Headquaters:</strong>
-                                <p>313, Evergreen CHS.<br>
-                                    Airoli Sector 15,<br>
-                                    New Bombay,<br>
-                                    Mumbai - 55.
-                                </p>
-                            </address>
-                            <div class="phone-fax-email">
-                                <p>
-                                    <strong>Phone:</strong> <span>(719)-778-8804</span>
-                                    <br />
-                                    <strong>Fax:</strong> <span>(719)-778-8804 8890</span>
-                                    <br />
-                                    <strong>Email:</strong> <span>info@whitegrapphics.in</span>
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-12">
-                    <div class="contact-right">
-                        <h3>Contact Us</h3>
-                        <form action="#">
-                            <input type="text" name="full-name" placeholder="Full Name" class="form-control">
-                            <input type="email" name="email" placeholder="Email Address" class="form-control">
-                            <textarea name="message" rows="3" placeholder="Your Message..." class="form-control"></textarea>
-
-                            <div class="send-btn">
-                                <a href="#" class="btn btn-lg btn-general btn-white" role="button">Send</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <?php
+    require_once("footer.php");
+    ?>
     <script type="text/javascript" src="../../assets/vendor/engine2/wowslider.js"></script>
     <script type="text/javascript" src="../../assets/vendor/engine2/script.js"></script>
     <!-- End WOWSlider.com BODY section -->
