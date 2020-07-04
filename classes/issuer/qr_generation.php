@@ -12,14 +12,10 @@ if(isset($_POST['verify']))
 //    echo "here";
     $generation_id=$_POST['generation_id'];
     $ciphering = "BF-CBC"; 
-  
     $iv_length = openssl_cipher_iv_length($ciphering); 
-    $options = 0; 
-  
+    $options = 0;
     $encryption_iv = '12345678'; 
-  
     $encryption_key = "DigiCertificate"; 
-  
     $committee_id_hash = openssl_encrypt($generation_id, $ciphering, $encryption_key, $options, $encryption_iv); 
 //    echo $committee_id_hash;
     

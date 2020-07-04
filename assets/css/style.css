@@ -68,3 +68,22 @@ bottom: 0;
 	
   
 }
+
+.e-footer{
+    background-color: #337ab7;
+    color: #fff;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+.e-footer a{
+    color: #fff;
+    font-weight: 100;
+}
+.e-footer a:hover{
+    text-decoration: underline;
+    color: #fff;
+    font-weight: 100;
+}
+
