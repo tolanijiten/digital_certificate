@@ -3,8 +3,15 @@ include_once("../../functions/db.php");
 session_start();
 //$organisation_id=$_SESSION['organization_id'];
 
+
 $committee_id=$_GET['committe_id'];
+$committee_id_url = explode(' ', $committee_id);
+$committee_id_esc=implode("+",$committee_id_url);
+
 $student_id=$_GET['student_id'];
+$student_id_url = explode(' ', $student_id);
+$student_id_esc=implode("+",$student_id_url);
+
 
 /*-----------------------Decrypting--------------------*/
 $encryption_key = "DigiCertificate"; 
@@ -12,10 +19,10 @@ $ciphering = "BF-CBC";
 $iv_length = openssl_cipher_iv_length($ciphering); 
 $options = 0;   
 $encryption_iv = '12345678';   
-$committe_id_dehash = openssl_decrypt($committee_id, $ciphering, 
+$committe_id_dehash = openssl_decrypt($committee_id_esc, $ciphering, 
 $encryption_key, $options, $encryption_iv);
 
-$student_id_dehash= openssl_decrypt($student_id, $ciphering, 
+$student_id_dehash= openssl_decrypt($student_id_esc, $ciphering, 
 $encryption_key, $options, $encryption_iv);
 //echo $committe_id_dehash;
 //echo $student_id_dehash;

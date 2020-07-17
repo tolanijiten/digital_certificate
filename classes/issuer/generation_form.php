@@ -15,6 +15,7 @@ if(isset($_SESSION['user_id'])){
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../admin/scripts/toastr.min.css">
     
     <style>
         body{
@@ -194,6 +195,7 @@ if(isset($_SESSION['user_id'])){
     
     <script src="../../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../admin/scripts/toastr.min.js"></script>
     <script>
     function velidate(){
         
@@ -246,6 +248,37 @@ if(isset($_SESSION['user_id'])){
     window.alert("sheet");
     return false;
 }
+        
+        
+        
+        
+         <?php
+if(isset($_SESSION['already_exists'])){
+    ?>
+toastr["error"]("Committee Already Exists", "Cannot Generate");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['already_exists']);
+}
+    ?>
     </script>
     
 </body>

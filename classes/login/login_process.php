@@ -34,6 +34,7 @@ if(isset($_POST['submit'])){
         elseif($role==1 && $result_set['logged_in']==1)
         {
             $_SESSION['user_id']=$user_id;
+            $_SESSION['issuer']=1;
             header("Location: ../issuer/select_template.php");
         }
     }

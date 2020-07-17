@@ -2,6 +2,7 @@
 <html>
 <head>
    <title>View Issuer</title>
+   <link rel = "icon" href =  "../../assets/images/ves_logo.png" type = "image/x-icon">	<meta charset="UTF-8">
    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
@@ -26,26 +27,9 @@
 </head>
 
 <body>
-<nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Vivekanad Education Society Institute of Technology</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-      <li class="nav-item">
-        <a class="nav-link bit_nav" href="add_issuer.php"><i class="fa fa-user-plus"> Add </i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link bit_nav" href="#"><i class="fa fa-eye">  View </i></a>
-      </li>
-      <li class="nav-item">
-        <a class="logout btn bit_button" href="../login/logout.php" >Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <?php
+    require_once('navbar.php');
+    ?>
    <section style="margin:100px; margin-bottom:0;">
    <div class="container-fluid" style="margin-top:90px;">
     
@@ -88,11 +72,92 @@
                        <td><?php echo $username; ?></td>
                        <td><?php echo $email_id; ?></td>
                        <td><?php echo $plain; ?></td>
-                       <td><i class="fa fa-edit"></i></td>
+                       
+                       <?php echo"<td><a href='#' class='btn btn-info open-edit-modal' data-toggle='modal' data-target='#editModal' id='$user_id' name='$username'  email='$email_id' password='$plain'  data-vendor=$user_id ><i class='fa fa-edit'></i></a></td>"; ?>
+                       
                        <td><a href="delete.php?user_id=<?php echo $user_id?>" class='btn btn-danger open-delete-modal' data-toggle='modal' data-target='#deleteModal' id='<?php echo $user_id; ?>' data-vendor='<?php $user_id ?>'  ><i class='fa fa-trash'></i></a></td>
   
                    </tr>
-                   <!--Edit Button Modal -->
+<!--   Edit Modal-->
+   
+       <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h4 class="modal-title">Edit</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <form action="edit.php" method="POST" enctype="" style="width:100%">
+                            <div class="form-body">
+                                <div class="form-group clearfix">
+
+                                    <div class="col-md-12">
+                                        <p style="font-size:20px;"></p>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <div class="col-md-12">
+                                       
+                                        <lable>Issuer ID</lable>
+                                        <input class="form-control" type="text" name="student_id" id="stud_form_edit_id" readonly> 
+                                    </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Issuer Name</lable>
+                                        <input class="form-control" type="text" name="name" id="stud_form_name_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Email</lable>
+                                        <input class="form-control" type="text" name="email" id="stud_form_email_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <div class="col-md-12">
+                                       
+                                        <lable>Password</lable>
+                                        <input class="form-control" type="text" name="password" id="stud_form_password_id"> 
+                                       </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="col-md-12">
+                                        <input type="hidden" name="generation_id" id="generation_id" value="<?php echo $generation_id;?>"> 
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button id="" type="submit" class="btn btn-danger" name="update_record"><i class="fa fa-edit"></i> EDIT</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
                  
 <!--DELETE BUTTON MODAL-->
 <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
@@ -272,8 +337,13 @@
         
         <!--row-->
     </div>
-   </section>
     
+   </section>
+    <?php
+    echo "<br>";
+        echo "<br>";    
+       require_once('footer.php');
+       ?>
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
  <script src="../../assets/js/bootstrap.min.js"></script>
  <script src="scripts/toastr.min.js"></script>
@@ -412,6 +482,46 @@ $(document).ready(function(){
     
 });
      
+
+     
+     
+     
+     
+     
+     
+     $(document).ready(function() {
+   $(".open-edit-modal").click(function() {
+    
+     $("#edit").modal("show");
+  }),
+
+    $(".open-edit-modal").click(function() {
+        $stud_id = $(this).attr('id');
+        $name = $(this).attr('name');
+       $email=$(this).attr('email');
+       $password=$(this).attr('password');
+//        window.alert($email);  
+
+     $("#stud_form_edit_id").val($stud_id);
+     $("#stud_form_name_id").val($name);
+     $("#stud_form_email_id").val($email);
+     $("#stud_form_password_id").val($password);
+   
+       
+  });
+    
+    
+    
+    
+});
+
+     
+     
+     
+     
+     
+     
+     
      
      
      
@@ -500,6 +610,35 @@ toastr.options = {
     unset($_SESSION['user_id']);
 }
     ?>
+     
+     <?php
+if(isset($_SESSION['update'])){
+    ?>
+toastr["success"]("Successfully Updated", "Update");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['update']);
+}
+    ?>
+
 
 </script>
     

@@ -18,7 +18,7 @@ if(isset($_POST['submit_generation'])){
     $row = mysqli_fetch_assoc($result1);
 //    echo mysqli_num_rows($result1);
     
-    if(mysqli_num_rows($result1)>1){
+    if(mysqli_num_rows($result1)>=1){
 //        echo 'here';
 //        echo mysqli_num_rows($result1);
         $_SESSION['failure']=1;

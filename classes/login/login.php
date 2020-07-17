@@ -23,7 +23,7 @@
 <body style="background-color:#337ab7">
 	
 	<div class="limiter">
-		<div class="container" style="margin-top:100px;margin-right:100px;">
+		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="../../assets/images/img-01.png" alt="IMG">
@@ -33,9 +33,22 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
-
+                   <?php
+                    if(isset($_GET['q'])){
+                        if($_GET['q']==1){      
+                    ?>
+                    <span class="" style="color:red; margin:50px; margin-bottom:150px;">
+						Invalid email or password!!
+					</span>
+                    <?php
+                             
+                        }
+                    }
+                    ?>
+                    
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email_id" placeholder="Email Id"n class="focus-input100" >
+						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fas fa-envelope" aria-hidden="true"></i>
 						</span>

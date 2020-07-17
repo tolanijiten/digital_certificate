@@ -103,6 +103,12 @@ function display_students(){
             background: #337ab7;
             color: #f8f9fa;
         }
+        .e-footer{
+            left: 0;
+    bottom: 0;
+    position: fixed;
+
+        }
 </style>
 </head>
 
@@ -335,7 +341,9 @@ function display_students(){
         </div>
         <!-- /.modal-dialog -->
     </div>
-   
+   <?php
+        require_once('footer.php');
+    ?>
    
 <!-----------------End of edit modal   -->
    
@@ -595,7 +603,7 @@ toastr.options = {
 }
         //toastr["Success"]("You just successfull edited record","Category Edit");
     <?php
-    unset($_SESSION['generate']);
+    unset($_SESSION['delete_record']);
 }
     ?>
     

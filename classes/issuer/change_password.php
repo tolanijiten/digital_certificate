@@ -39,12 +39,12 @@ if($logged_in==0){
             
 }
         .submit-btn{
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2); background-color: #204a84; padding: 10px; width: 50%; margin-top:15px; color: white; position: absolute;left: 25%;  border: solid 2px #204a84;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2); background-color: #337ab7; padding: 10px; width: 50%; margin-top:15px; color: white; position: absolute;left: 25%;  border: solid 2px #337ab7;
         }
         .submit-btn:hover{
             background: #f8f9fa;
-            border: solid 2px #204a84;
-            color: #204a84;
+            border: solid 2px #337ab7;
+            color: #337ab7;
         }
 	
 
@@ -53,6 +53,8 @@ if($logged_in==0){
 
 <body>
 <nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light">
+     <img src="../../assets/images/ves_logo.png" height="40px;" style="margin-right:20px;">
+
   <a class="navbar-brand" href="#">Vivekanad Education Society Institute of Technology</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -88,8 +90,8 @@ if($logged_in==0){
           <div class="inner-container" style="">
            <div class="form-title">
                         <div class="category-heading text-center">
-                            <h3  class="text-heading" style="font-size: 30px;">Chnage Password</h3>
-                            <div style="width: 50px; height: 3px; background:#204a84; margin: 0 auto 30px;"></div>
+                            <h3  class="text-heading" style="font-size: 30px;">Change Password</h3>
+                            <div style="width: 50px; height: 3px; background:#337ab7; margin: 0 auto 30px;"></div>
                         </div><!--End of category-heading-->
                     </div><!-- End of Form Title-->
                     <div class="form-content">
@@ -110,7 +112,7 @@ if($logged_in==0){
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
                                 <label for="">Previous Password</label>
-                                <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
+                                <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
                                 <input type="text" class="form-control" id="previous_password" placeholder="Enter Passowrd recived form Admin" name="previous_password">
                             </div> 
                             </div>
@@ -119,7 +121,7 @@ if($logged_in==0){
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
                                 <label for="">New Password</label>
-                                <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
+                                <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
                                 <input type="password" class="form-control" id="new_password" placeholder="New Password" name="new_password">
                             </div> 
                             </div>
@@ -128,7 +130,7 @@ if($logged_in==0){
                             <div class="col-md-6 offset-md-3">
                                <div class="form-group">
                                 <label for="">Confirm Password</label>
-                                <div style="width: 50px; height: 3px; background:#204a84; margin-bottom: 15px;"></div>
+                                <div style="width: 50px; height: 3px; background:#337ab7; margin-bottom: 15px;"></div>
                                 <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password">
                             </div>
                             </div>
@@ -146,15 +148,6 @@ if($logged_in==0){
            </div><!--End of inner container-->
        </div><!-- End of Container-->
    </section>
-   <footer class="page-footer font-small blue">
-
-  <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#"> VESIT</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
     
  <script src="../../assets/js/jquery-3.2.1.min.js"></script>
  <script src="../../assets/js/bootstrap.min.js"></script>   
@@ -184,6 +177,14 @@ if($logged_in==0){
 
     }
     </script> 
+    <?php
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    
+    
+    require_once('footer.php');
+    ?>
 </body>
 </html>
 <?php 

@@ -246,6 +246,7 @@ if(isset($_SESSION['user_id'])){
     <!--container fluid end-->
     <!--Footer-->
     <?php
+    echo '<br>';
     require_once("footer.php");
     ?>
     <script type="text/javascript" src="../../assets/vendor/engine2/wowslider.js"></script>
@@ -277,6 +278,35 @@ toastr.options = {
         //toastr["Success"]("You just successfull edited record","Category Edit");
     <?php
     unset($_SESSION['change_pwd']);
+}
+    ?>
+        
+        
+                    <?php
+if(isset($_SESSION['issuer'])){
+    ?>
+toastr["success"]("Logged In Successfully", "Issuer");
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+        //toastr["Success"]("You just successfull edited record","Category Edit");
+    <?php
+    unset($_SESSION['issuer']);
 }
     ?>
     </script>

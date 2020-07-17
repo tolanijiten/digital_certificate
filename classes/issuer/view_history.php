@@ -50,6 +50,13 @@ $user_id = $_SESSION['user_id'];
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             cursor: pointer;
+    
+        }
+        .e-footer{
+            left: 0;
+    bottom: 0;
+    position: fixed;
+
         }
 
     </style>
@@ -152,7 +159,11 @@ $user_id = $_SESSION['user_id'];
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
+    
     </div>
+    <?php
+        require_once('footer.php');
+    ?>
     <script src="../../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script> 
